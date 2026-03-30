@@ -1,12 +1,14 @@
 from order import Analysis, Campaign
+from pathlib import Path
 from typing import Literal
 
 from configuration.xyh_bbtautau.metadata.categories import add_categories
 from configuration.xyh_bbtautau.metadata.channels import add_channels
+from configuration.xyh_bbtautau.metadata.datasets import add_datasets
 
 
 def _add_config(
-    analysis_inst: Analysis,
+    analysis: Analysis,
     name: str,
     id: int | Literal["+"],
     ecm: float,
@@ -33,17 +35,24 @@ def _add_config(
             "nano_version": nano_version,
         },
     )
-    config_inst = analysis_inst.add_config(campaign=campaign_inst)
+    config = analysis.add_config(campaign=campaign_inst)
+
+    # Set parameters obtained from the workflow configuation
+    # TODO sample database is hard-coded for now, fix this
+    config.set_aux(
+        "sample_database_dir",
+        Path("/work/mmolch/xyh-bbtautau-crown/KingMaker/sample_database"),
+    )
 
     # Add configuration objects to the campaign's config instance
-    add_channels(config_inst)
-    add_categories(config_inst)
-    # add_dataset_insts(config_inst)
+    add_channels(config)
+    add_categories(config)
+    add_datasets(config)
     # add_process_insts(config_inst)
     # add_variable_insts(config_inst)
 
 
-def add_configs(analysis_inst: Analysis):
+def add_configs(analysis: Analysis):
     """
     Add configurations related to specific data-taking campaigns to the
     :py:class:`~order.Analysis` instance.
@@ -54,7 +63,7 @@ def add_configs(analysis_inst: Analysis):
 
     # 2022preEE
     _add_config(
-        analysis_inst,
+        analysis,
         name="2022preEE",
         id="+",
         year=2022,
@@ -67,7 +76,7 @@ def add_configs(analysis_inst: Analysis):
 
     # 2022postEE
     _add_config(
-        analysis_inst,
+        analysis,
         name="2022postEE",
         id="+",
         year=2022,
@@ -84,7 +93,7 @@ def add_configs(analysis_inst: Analysis):
 
     # 2023preBPix
     _add_config(
-        analysis_inst,
+        analysis,
         name="2023preBPix",
         id="+",
         year=2023,
@@ -99,7 +108,7 @@ def add_configs(analysis_inst: Analysis):
 
     # 2023postBPix
     _add_config(
-        analysis_inst,
+        analysis,
         name="2023postBPix",
         id="+",
         year=2023,
@@ -114,7 +123,7 @@ def add_configs(analysis_inst: Analysis):
 
     # 2024
     _add_config(
-        analysis_inst,
+        analysis,
         name="2024",
         id="+",
         year=2024,
