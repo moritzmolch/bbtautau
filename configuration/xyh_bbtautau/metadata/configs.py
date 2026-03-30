@@ -5,9 +5,10 @@ from typing import Literal
 from configuration.xyh_bbtautau.metadata.categories import add_categories
 from configuration.xyh_bbtautau.metadata.channels import add_channels
 from configuration.xyh_bbtautau.metadata.datasets import add_datasets
+from configuration.xyh_bbtautau.metadata.processes import add_processes
 
 
-def _add_config(
+def add_config(
     analysis: Analysis,
     name: str,
     id: int | Literal["+"],
@@ -48,7 +49,7 @@ def _add_config(
     add_channels(config)
     add_categories(config)
     add_datasets(config)
-    # add_process_insts(config_inst)
+    add_processes(config)
     # add_variable_insts(config_inst)
 
 
@@ -62,7 +63,7 @@ def add_configs(analysis: Analysis):
     """
 
     # 2022preEE
-    _add_config(
+    add_config(
         analysis,
         name="2022preEE",
         id="+",
@@ -75,7 +76,7 @@ def add_configs(analysis: Analysis):
     )
 
     # 2022postEE
-    _add_config(
+    add_config(
         analysis,
         name="2022postEE",
         id="+",
@@ -92,7 +93,7 @@ def add_configs(analysis: Analysis):
     )
 
     # 2023preBPix
-    _add_config(
+    add_config(
         analysis,
         name="2023preBPix",
         id="+",
@@ -107,7 +108,7 @@ def add_configs(analysis: Analysis):
     )
 
     # 2023postBPix
-    _add_config(
+    add_config(
         analysis,
         name="2023postBPix",
         id="+",
@@ -122,7 +123,7 @@ def add_configs(analysis: Analysis):
     )
 
     # 2024
-    _add_config(
+    add_config(
         analysis,
         name="2024",
         id="+",
