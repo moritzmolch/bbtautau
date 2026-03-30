@@ -1,8 +1,8 @@
 from order import Analysis, Campaign
 from typing import Literal
 
-from config.xyh_bbtautau.metadata.categories import add_categories
-from config.xyh_bbtautau.metadata.channels import add_channels
+from configuration.xyh_bbtautau.metadata.categories import add_categories
+from configuration.xyh_bbtautau.metadata.channels import add_channels
 
 
 def _add_config(
@@ -38,6 +38,9 @@ def _add_config(
     # Add configuration objects to the campaign's config instance
     add_channels(config_inst)
     add_categories(config_inst)
+    # add_dataset_insts(config_inst)
+    # add_process_insts(config_inst)
+    # add_variable_insts(config_inst)
 
 
 def add_configs(analysis_inst: Analysis):

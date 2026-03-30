@@ -1,5 +1,7 @@
 from order import Config
 
+# from configuration.xyh_bbtautau.producers.selections.base import base_selection
+
 
 def _add_base_signal_categories(
     config: Config,
@@ -21,12 +23,12 @@ def _add_base_signal_categories(
             channel=channel_inst,
             tags={"signal_cat"},
             aux={
-                "default_selection": [],
+                "default_selection": [], # [base_selection],
             },
         )
 
 
-def add_category_insts(
+def add_categories(
     config_inst: Config,
 ):
     """
