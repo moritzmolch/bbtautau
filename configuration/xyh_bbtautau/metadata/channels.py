@@ -1,7 +1,6 @@
 from order import Config
 
-# from xyh.config.variables import add_variable_insts
-
+from configuration.xyh_bbtautau.metadata.variables import add_variables
 
 def add_channels(
     config: Config,
@@ -79,6 +78,6 @@ def add_channels(
     )
 
     # Add variables
-    # for channel in config.channels.values():
-    #     add_variable_insts(channel)
+    for channel in config.channels.values():
+        add_variables(channel)
 
