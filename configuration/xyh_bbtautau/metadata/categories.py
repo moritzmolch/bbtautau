@@ -1,9 +1,7 @@
 from order import Config
 
-# from configuration.xyh_bbtautau.producers.selections.base import base_selection
 
-
-def _add_base_signal_categories(
+def add_base_signal_categories(
     config: Config,
 ):
     """
@@ -22,10 +20,130 @@ def _add_base_signal_categories(
             id="+",
             channel=channel_inst,
             tags={"signal_cat"},
-            aux={
-                "default_selection": [], # [base_selection],
-            },
         )
+
+
+# def _add_jet_category_insts(
+#     config_inst: Config,
+# ):
+#     """
+#     Add categories with jet (or b jet) selection on top of the base signal
+#     region selection.
+#     """
+
+#     # Get the analysis channels
+#     channel_insts = config_inst.channels
+
+#     # Add categories with exactly and at least n jets for each channel
+#     for channel_name, _, channel_inst in channel_insts.items():
+#         for n_jets in range(1, 5):
+#             # At least n jets
+#             config_inst.add_category(
+#                 name=f"{channel_name}_geq{n_jets}j",
+#                 id="+",
+#                 channel=channel_inst,
+#                 tags={"signal_cat", f"geq{n_jets}j"},
+#                 aux={
+#                     "operation_constructors": [jet_category_selection],
+#                 },
+#             )
+
+#             # Exactly n jets
+#             config_inst.add_category(
+#                 name=f"{channel_name}_eq{n_jets}j",
+#                 id="+",
+#                 channel=channel_inst,
+#                 tags={"signal_cat", f"eq{n_jets}j"},
+#                 aux={
+#                     "operation_constructors": [jet_category_selection],
+#                 },
+#             )
+
+#         if n_jets >= 1:
+#             # At least n b jets
+#             config_inst.add_category(
+#                 name=f"{channel_name}_geq{n_jets}b",
+#                 id="+",
+#                 channel=channel_inst,
+#                 tags={"signal_cat", f"geq{n_jets}b"},
+#                 aux={
+#                     "operation_constructors": [jet_category_selection],
+#                 },
+#             )
+
+#             # Exactly n b jets
+#             config_inst.add_category(
+#                 name=f"{channel_name}_eq{n_jets}b",
+#                 id="+",
+#                 channel=channel_inst,
+#                 tags={"signal_cat", f"eq{n_jets}b"},
+#                 aux={
+#                     "operation_constructors": [jet_category_selection],
+#                 },
+#             )
+
+
+def add_abcd_categories(
+    config_inst: Config,
+):
+    """
+    Add additional categories for QCD estimation with the ABCD method.
+    """
+
+    # Get the analysis channels
+    channel_insts = config_inst.channels
+
+    # Add (OS, anti-ID), (SS, ID), and (SS, anti-ID) categories for each
+    # channel
+    for channel_name, _, channel_inst in channel_insts.items():
+        # opposite-sign, anti-ID region
+        config_inst.add_category(
+            name=f"{channel_name}_abcd_os_antiid",
+            id="+",
+            channel=channel_inst,
+            tags={"abcd", "os", "antiid"},
+        )
+
+        # same-sign, ID region
+        config_inst.add_category(
+            name=f"{channel_name}_abcd_ss_id",
+            id="+",
+            channel=channel_inst,
+            tags={"abcd", "os", "id"},
+        )
+
+        # same-sign, anti-ID region
+        config_inst.add_category(
+            name=f"{channel_name}_abcd_ss_antiid",
+            id="+",
+            channel=channel_inst,
+            tags={"abcd", "os", "antiid"},
+        )
+
+
+# def _add_fake_factor_category_insts(
+#     config_inst: Config,
+# ):
+#     """
+#     Add additional categories for applying the fake factor method to this
+#     analysis.
+#     """
+
+#     # Get the analysis channels
+#     channel_insts = config_inst.channels
+
+#     # Add anti-ID category for each channel, representing the AR of the fake
+#     # factor method
+#     for channel_name, _, channel_inst in channel_insts.items():
+#         config_inst.add_category(
+#             name=f"{channel_name}_ff_antiid",
+#             id="+",
+#             channel=channel_inst,
+#             tags={"ff", "antiid"},
+#             aux={
+#                 "operation_constructors": [fake_factor_category_selection],
+#             },
+#         )
 
 
 def add_categories(
@@ -39,5 +157,5 @@ def add_categories(
 
     # Base signal categories (after event selection and before NN
     # classification)
-    _add_base_signal_categories(config_inst)
+    add_base_signal_categories(config_inst)
 

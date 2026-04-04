@@ -213,19 +213,11 @@ def ll_pair(
         )
     )
 
-    if channel.name in ["et", "mt", "tt"]:
-        # Require opposite-sign charge for the two tau candidates
-        selections["tautau_pair_os"] = "((q_1 * q_2) < 0)"
+    # Require opposite-sign charge for the two tau candidates
+    selections["ll_pair_os"] = "((q_1 * q_2) < 0)"
 
-        # Require a minimum spatial separation of the two tau candidates
-        selections["tautau_pair_delta_r"] = "(deltaR_ditaupair > 0.5)"
-
-    elif channel.name in ["ee", "mm", "em"]:
-        # Require opposite-sign charge for the two tau candidates
-        selections["ll_pair_os"] = "((q_1 * q_2) < 0)"
-
-        # Require a minimum spatial separation of the two tau candidates
-        selections["ll_pair_delta_r"] = "(deltaR_ditaupair > 0.5)"
+    # Require a minimum spatial separation of the two tau candidates
+    selections["ll_pair_delta_r"] = "(deltaR_ditaupair > 0.5)"
 
     return selections
 
