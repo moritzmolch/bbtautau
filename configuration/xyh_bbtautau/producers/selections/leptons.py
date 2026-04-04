@@ -194,12 +194,12 @@ def hadronic_taus(
 @requires(
     metadata={"channel"},
 )
-def dilepton_pair(
+def ll_pair(
     channel: Channel,
 ) -> OrderedDict[str, str]:
     """
     Lepton selection, built from the single electron, muon, and hadronic tau
-    selections, as well as criteria on charge and $\Delta R$ of the pair. The
+    selections, as well as criteria on charge and $\\Delta R$ of the pair. The
     function returns an ordered dictionary with the filter names as keys and the
     ROOT expressions for the selections as values.
     """

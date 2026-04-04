@@ -3,7 +3,7 @@ from itertools import chain
 from order import Campaign, Channel
 
 from configuration.xyh_bbtautau.producers.helpers import requires
-from configuration.xyh_bbtautau.producers.selections.triggers import trigger
+from configuration.xyh_bbtautau.producers.selections.triggers import triggers
 from configuration.xyh_bbtautau.producers.selections.leptons import lepton_vetoes, ll_pair
 from configuration.xyh_bbtautau.producers.selections.jets import jet_vetomap, bb_pair
 
@@ -44,7 +44,7 @@ def base_selection(
     # Concatenate selections from sub-steps
     selections = OrderedDict(list(chain(
         # Chain the trigger, veto, dilepton, and di-b jet selections
-        trigger(campaign, channel),
+        triggers(campaign, channel),
         lepton_vetoes(channel),
         ll_pair(channel),
         jet_vetomap(),
