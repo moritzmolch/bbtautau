@@ -121,33 +121,31 @@ def add_abcd_categories(
         )
 
 
-# def _add_fake_factor_category_insts(
-#     config_inst: Config,
-# ):
-#     """
-#     Add additional categories for applying the fake factor method to this
-#     analysis.
-#     """
+def add_fake_factor_categories(
+    config: Config,
+):
+    """
+    Add additional categories for applying the fake factor method to this
+    analysis.
+    """
 
-#     # Get the analysis channels
-#     channel_insts = config_inst.channels
+    # Get the analysis channels
+    channels = config.channels
 
-#     # Add anti-ID category for each channel, representing the AR of the fake
-#     # factor method
-#     for channel_name, _, channel_inst in channel_insts.items():
-#         config_inst.add_category(
-#             name=f"{channel_name}_ff_antiid",
-#             id="+",
-#             channel=channel_inst,
-#             tags={"ff", "antiid"},
-#             aux={
-#                 "operation_constructors": [fake_factor_category_selection],
-#             },
-#         )
+    # Add anti-ID category for each channel, representing the AR of the fake
+    # factor method
+    for channel_name, _, channel_inst in channels.items():
+        if channel_name in ["et", "mt", "tt"]:
+            config.add_category(
+                name=f"{channel_name}_ff_antiid",
+                id="+",
+                channel=channel_inst,
+                tags={"ff", "antiid"},
+            )
 
 
 def add_categories(
-    config_inst: Config,
+    config: Config,
 ):
     """
     Add the analysis categories to the :py:class:`~order.Config`.
@@ -157,5 +155,12 @@ def add_categories(
 
     # Base signal categories (after event selection and before NN
     # classification)
-    add_base_signal_categories(config_inst)
+    add_base_signal_categories(config)
+
+    # ABCD categories (for estimation of QCD multijet production)
+    add_abcd_categories(config)
+
+    # Fake factor categories (for estimation of jet -> tau_h fakes)
+    add_fake_factor_categories(config)
+
 
