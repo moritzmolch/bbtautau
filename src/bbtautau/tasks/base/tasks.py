@@ -3,7 +3,6 @@ Base tasks of the `bbtautau` workflow.
 """
 
 from law import LocalDirectoryTarget, LocalFileTarget, Task
-from luigi import Parameter
 import os
 
 
@@ -12,20 +11,12 @@ class BaseTask(Task):
     Base class of all `bbtautau` tasks.
     """
 
-    tag = Parameter(
-        default="DEFAULT",
-        description=(
-            "Tag to identify the version of the output files. Optional."
-        ),
-    )
-
     def task_parts(self):
         return ()
 
     def parts_before(self):
         return (
             self.task_family,
-            self.tag,
         )
 
     def parts_after(self):
@@ -33,6 +24,7 @@ class BaseTask(Task):
 
     def local_path(self, *parts: str):
         return os.path.join(
+            os.path.expandvars("$BBTT_DATA"),
             *self.parts_before(),
             *self.task_parts(),
             *self.parts_after(),
