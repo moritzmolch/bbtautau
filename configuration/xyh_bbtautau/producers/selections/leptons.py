@@ -1,22 +1,27 @@
 from collections import OrderedDict
 from itertools import chain
-from order import Channel
 
-from configuration.xyh_bbtautau.producers.helpers import requires
+from bbtautau.shapes import AnalysisContext
 
 
-@requires(
-    metadata={"channel"},
-)
 def lepton_vetoes(
-    channel: Channel,
+    analysis_context: AnalysisContext,
 ) -> OrderedDict[str, str]:
     """
     Apply vetoes on additional leptons. In the semileptonic channels, a veto
     on dilepton systems constructed from a looser selection is also applied. The
     function returns an ordered dictionary with the filter names as keys and the
     ROOT expressions for the selections as values.
+
+    :param analysis_context: Analysis context, to which the selections should
+        be tailored. The attribute used in this function is
+        :py:attr:`~shape_producer.operations.AnalysisContext.channel`.
+
+    :return: Collection of filter operations.
     """
+
+    # Get the channel from the analysis context
+    channel = analysis_context.channel
 
     # Storage for lepton vetoes
     selections = OrderedDict()
@@ -32,17 +37,23 @@ def lepton_vetoes(
     return selections
 
 
-@requires(
-    metadata={"channel"},
-)
 def electrons(
-    channel: Channel,
+    analysis_context: AnalysisContext,
 ) -> OrderedDict[str, str]:
     """
     Apply electron selection in channels with at least one electron. The
     function returns an ordered dictionary with the filter names as keys and the
     ROOT expressions for the selections as values.
+
+    :param analysis_context: Analysis context, to which the selections should
+        be tailored. The attribute used in this function is
+        :py:attr:`~shape_producer.operations.AnalysisContext.channel`.
+
+    :return: Collection of filter operations.
     """
+
+    # Get the channel from the analysis context
+    channel = analysis_context.channel
 
     # Storage for electron selection
     selections = OrderedDict()
@@ -76,17 +87,23 @@ def electrons(
     return selections
 
 
-@requires(
-    metadata={"channel"},
-)
 def muons(
-    channel: Channel,
+    analysis_context: AnalysisContext,
 ) -> OrderedDict[str, str]:
     """
     Apply muon selection in channels with at least one muon. The function
     returns an ordered dictionary with the filter names as keys and the ROOT
     expressions for the selections as values.
+
+    :param analysis_context: Analysis context, to which the selections should
+        be tailored. The attribute used in this function is
+        :py:attr:`~shape_producer.operations.AnalysisContext.channel`.
+
+    :return: Collection of filter operations.
     """
+
+    # Get channel from the analysis context
+    channel = analysis_context.channel
 
     # Storage for all muon selections
     selections = OrderedDict()
@@ -119,17 +136,23 @@ def muons(
     return selections
 
 
-@requires(
-    metadata={"channel"},
-)
 def hadronic_taus(
-    channel: Channel,
+    analysis_context: AnalysisContext,
 ) -> OrderedDict[str, str]:
     """
     Apply hadronic tau selection in channels with at least one hadronic tau. The
     function returns an ordered dictionary with the filter names as keys and the
     ROOT expressions for the selections as values.
+
+    :param analysis_context: Analysis context, to which the selections should
+        be tailored. The attribute used in this function is
+        :py:attr:`~shape_producer.operations.AnalysisContext.channel`.
+
+    :return: Collection of filter operations.
     """
+
+    # Get channel from the analysis context
+    channel = analysis_context.channel
 
     # Storage for tau selection
     selections = OrderedDict()
@@ -191,25 +214,26 @@ def hadronic_taus(
     return selections
 
 
-@requires(
-    metadata={"channel"},
-)
-def ll_pair(
-    channel: Channel,
-) -> OrderedDict[str, str]:
+def ll_pair(analysis_context: AnalysisContext) -> OrderedDict[str, str]:
     """
     Lepton selection, built from the single electron, muon, and hadronic tau
     selections, as well as criteria on charge and $\\Delta R$ of the pair. The
     function returns an ordered dictionary with the filter names as keys and the
     ROOT expressions for the selections as values.
+
+    :param analysis_context: Analysis context, to which the selections should
+        be tailored. The attribute used in this function is
+        :py:attr:`~shape_producer.operations.AnalysisContext.channel`.
+
+    :return: Collection of filter operations.
     """
 
     # Collect electron, muon, and tau selection
     selections = OrderedDict(
         chain(
-            electrons(channel).items(),
-            muons(channel).items(),
-            hadronic_taus(channel).items(),
+            electrons(analysis_context).items(),
+            muons(analysis_context).items(),
+            hadronic_taus(analysis_context).items(),
         )
     )
 
@@ -220,4 +244,3 @@ def ll_pair(
     selections["ll_pair_delta_r"] = "(deltaR_ditaupair > 0.5)"
 
     return selections
-

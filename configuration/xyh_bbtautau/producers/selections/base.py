@@ -1,11 +1,18 @@
 from collections import OrderedDict
 from itertools import chain
-from order import Category, Campaign, Channel
+from order import Category, Channel
+from bbtautau.shapes import AnalysisContext
 
-from configuration.xyh_bbtautau.producers.helpers import requires
 from configuration.xyh_bbtautau.producers.selections.triggers import triggers
 from configuration.xyh_bbtautau.producers.selections.leptons import lepton_vetoes, ll_pair
 from configuration.xyh_bbtautau.producers.selections.jets import jet_vetomap, bb_pair
+from configuration.xyh_bbtautau.producers.selections.gen import (
+    z_ee_mumu_gen_selection,
+    z_tautau_gen_selection,
+    tautau_from_genuine_tau_selection,
+    tautau_from_jet_fake_selection,
+    tautau_from_remaining_selection,
+)
 
 
 def modify_selection_for_abcd_categories(
@@ -16,7 +23,7 @@ def modify_selection_for_abcd_categories(
     # If the category has tag "ss", it means that we should apply a
     # same-sign charge selection for the dilepton candidate
     # TODO Rename key
-    if category.has_tags({"ss"}):
+    if category.has_tag({"ss"}):
         selections["ll_pair_os"] = "((q_1 * q_2) > 0)"
 
     # If the category has tag "antiid", it means that we should apply:
@@ -28,7 +35,7 @@ def modify_selection_for_abcd_categories(
     # - A selection for the leading electron to not pass the MVA-based
     #   electron ID (with isolation variables) at the 90% efficiency WP
     #   in the ee channel.
-    if category.has_tags({"antiid"}):
+    if category.has_tag({"antiid"}):
 
         if channel.name in ["et", "mt", "tt"]:
             # Get the working points for the tau ID depending on the channel
@@ -94,7 +101,7 @@ def modify_selection_for_fake_factor_categories(
     # - A selection for the leading electron to not pass the MVA-based
     #   electron ID (with isolation variables) at the 90% efficiency WP
     #   in the ee channel.
-    if category.has_tags({"antiid"}):
+    if category.has_tag({"antiid"}):
 
         if channel.name in ["et", "mt", "tt"]:
             # Get the working points for the tau ID depending on the channel
@@ -131,14 +138,36 @@ def modify_selection_for_fake_factor_categories(
     return selections
 
 
-@requires(
-    metadata={"campaign", "channel", "category"}
-)
-def default_selection(
-    *,
-    campaign: Campaign,
-    channel: Channel,
-    category: Category,
+def gen_selection(
+    analysis_context: AnalysisContext,
+):
+    # Store for process-specific generator-level selections
+    selections = OrderedDict()
+
+    # Add generator-level selection for DY -> ee and DY -> mumu processes
+    if (
+        analysis_context.process.has_tag({"dy", "ee"}, mode=all)
+        or analysis_context.process.has_tag({"dy", "mumu"}, mode=all)
+    ):
+        selections.update(z_ee_mumu_gen_selection(analysis_context))
+
+    # Add generator-level selection for DY -> tautau processes
+    if analysis_context.process.has_tag({"dy", "tautau"}, mode=all):
+        selections.update(z_tautau_gen_selection(analysis_context))
+
+    # Add generator-level selections for the different tau decay modes for processes with hadronic taus
+    if analysis_context.process.has_tag({"tautau_genuine"}):
+        selections.update(tautau_from_genuine_tau_selection(analysis_context))
+    if analysis_context.process.has_tag({"tautau_jetfakes"}):
+        selections.update(tautau_from_jet_fake_selection(analysis_context))
+    if analysis_context.process.has_tag({"tautau_remaining"}):
+        selections.update(tautau_from_remaining_selection(analysis_context))
+
+    return selections
+
+
+def channel_selection(
+    analysis_context: AnalysisContext,
 ) -> OrderedDict[str, str]:
     """
     The base selection of the analysis, including:
@@ -158,41 +187,42 @@ def default_selection(
     - The selection of two viable b-jet candidates.
 
     :param analysis_context: Analysis context, to which the selections should
-        be tailored. Attributes used in this function are
-        :py:attr`~shape_producer.operations.AnalysisContext.campaign` and
-        :py:class`~shape_producer.operations.AnalysisContext.channel`.
+        be tailored. The attributes used in this function are
+        :py:attr:`~shape_producer.operations.AnalysisContext.campaign` and
+        :py:attr:`~shape_producer.operations.AnalysisContext.channel`.
 
-    :return: A collection of filter operations for the base selection.
+    :return: Collection of filter operations.
     """
 
-    # Concatenate selections from sub-steps
+    # Concatenate base selections from sub-steps
     selections = OrderedDict(list(chain(
         # Chain the trigger, veto, dilepton, and di-b jet selections
-        triggers(campaign, channel),
-        lepton_vetoes(channel),
-        ll_pair(channel),
-        jet_vetomap(),
-        bb_pair(),
+        triggers(analysis_context).items(),
+        lepton_vetoes(analysis_context).items(),
+        ll_pair(analysis_context).items(),
+        jet_vetomap(analysis_context).items(),
+        bb_pair(analysis_context).items(),
     )))
 
-    if category.has_tags({"signal_cat"}):
+    # Category-specific modifications
+    if analysis_context.category.has_tag({"signal_cat"}):
         # For the base categories, the base selection can be returned
         pass
 
-    elif category.has_tags({"abcd"}):
+    elif analysis_context.category.has_tag({"abcd"}):
         # Alter the ID and SS/OS selections for ABCD categories
         selections = modify_selection_for_abcd_categories(
             selections,
-            channel,
-            category,
+            analysis_context.channel,
+            analysis_context.category,
         )
 
-    elif category.has_tags({"ff"}):
+    elif analysis_context.category.has_tag({"ff"}):
         # Alter the ID selection for this category
         selections = modify_selection_for_fake_factor_categories(
             selections,
-            channel,
-            category,
+            analysis_context.channel,
+            analysis_context.category,
         )
 
     return selections

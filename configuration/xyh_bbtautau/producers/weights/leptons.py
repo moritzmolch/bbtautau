@@ -1,21 +1,25 @@
-from order import Channel
 from collections import OrderedDict
 
-from configuration.xyh_bbtautau.producers.helpers import requires
+from bbtautau.shapes import AnalysisContext
 
 
-@requires(
-    metadata={"channel"},
-)
 def electrons(
-    *,
-    channel: Channel,
+    analysis_context: AnalysisContext,
 ) -> OrderedDict[str, str]:
     """
     Add electron ID weights in channels with electrons. The function returns an
     ordered dictionary with the weight names as keys and the ROOT expression to
     define the weight as values.
+
+    :param analysis_context: Analysis context, to which the selections should
+        be tailored. The attribute used in this function is
+        :py:attr:`~shape_producer.operations.AnalysisContext.channel`.
+
+    :return: Collection of weight definitions.
     """
+
+    # Get the channel from the analysis context
+    channel = analysis_context.channel
 
     # Empty storage for new weights
     weights = OrderedDict()
@@ -34,18 +38,23 @@ def electrons(
     return weights
 
 
-@requires(
-    metadata={"channel"},
-)
 def muons(
-    *,
-    channel: Channel,
+    analysis_context: AnalysisContext,
 ) -> OrderedDict[str, str]:
     """
     Add muon isolation and ID weights in channels with electrons. The function
     returns an ordered dictionary with the weight names as keys and the ROOT
     expression to define the weight as values.
+
+    :param analysis_context: Analysis context, to which the selections should
+        be tailored. The attribute used in this function is
+        :py:attr:`~shape_producer.operations.AnalysisContext.channel`.
+
+    :return: Collection of weight definitions.
     """
+
+    # Get the channel from the analysis context
+    channel = analysis_context.channel
 
     # Empty storage for new weights
     weights = OrderedDict()
@@ -71,18 +80,23 @@ def muons(
     return weights
 
 
-@requires(
-    metadata={"channel"},
-)
 def hadronic_taus(
-    *,
-    channel: Channel,
+    analysis_context: AnalysisContext,
 ) -> OrderedDict[str, str]:
     """
     Add hadronic tau ID weights in channels with hadronic taus. The function
     returns an ordered dictionary with the weight names as keys and the ROOT
     expression to define the weight as values.
+
+    :param analysis_context: Analysis context, to which the selections should
+        be tailored. The attribute used in this function is
+        :py:attr:`~shape_producer.operations.AnalysisContext.channel`.
+
+    :return: Collection of weight definitions.
     """
+
+    # Get the channel from the analysis context
+    channel = analysis_context.channel
 
     # Empty storage for tau weights
     weights = OrderedDict()
@@ -139,4 +153,3 @@ def hadronic_taus(
             )
 
     return weights
-

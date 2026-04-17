@@ -1,8 +1,6 @@
 from collections import OrderedDict
 from itertools import chain
-from order import Campaign, Channel
 
-from configuration.xyh_bbtautau.producers.helpers import requires
 from configuration.xyh_bbtautau.producers.weights.event import (
     pileup,
     normalization,
@@ -15,15 +13,16 @@ from configuration.xyh_bbtautau.producers.weights.leptons import (
     hadronic_taus,
 )
 from configuration.xyh_bbtautau.producers.weights.triggers import triggers
-
-
-@requires(
-    metadata={"campaign", "channel"}
+from configuration.xyh_bbtautau.producers.weights.processes import (
+    top_pt_reweighting,
+    tt_normalization,
+    z_pt_reweighting,
 )
-def default_weights(
-    *,
-    campaign: Campaign,
-    channel: Channel,
+from bbtautau.shapes import AnalysisContext
+
+
+def mc_weights(
+    analysis_context: AnalysisContext,
 ) -> OrderedDict[str, str]:
     """
     Base weights to be applied to events in all MC samples.
@@ -61,20 +60,33 @@ def default_weights(
         processes.
     """
 
+    # Do not apply any weights for data
+    if analysis_context.process.is_data:
+        return OrderedDict()
+
+    # Get the base weights for simulation
     weights = OrderedDict(
         [
             (name, expression)
             for name, expression in chain(
-                triggers(campaign, channel).items(),
-                pileup().items(),
-                electrons(channel).items(),
-                muons(channel).items(),
-                hadronic_taus(channel).items(),
-                b_jets().items(),
-                normalization(campaign).items(),
+                triggers(analysis_context).items(),
+                normalization(analysis_context).items(),
+                pileup(analysis_context).items(),
+                electrons(analysis_context).items(),
+                muons(analysis_context).items(),
+                hadronic_taus(analysis_context).items(),
+                b_jets(analysis_context).items(),
             )
         ]
     )
 
-    return weights
+    # Add Z pt reweighting for DY samples
+    if analysis_context.process.has_tag({"dy"}):
+        weights.update(z_pt_reweighting(analysis_context))
 
+    # Add top pt reweighting and tt normalization weights for tt samples
+    if analysis_context.process.has_tag({"tt"}):
+        weights.update(top_pt_reweighting(analysis_context))
+        weights.update(tt_normalization(analysis_context))
+
+    return weights

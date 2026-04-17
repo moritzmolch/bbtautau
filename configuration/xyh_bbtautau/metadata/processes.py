@@ -69,6 +69,7 @@ def add_signal_processes(config_inst: Config):
                     if config_inst.campaign.name == "2024" else
                     []
                 ),
+                tags={"signal"},
                 aux={
                     "is_signal": True,
                     "m_x": m_x,
@@ -104,6 +105,7 @@ def add_tt_processes(config: Config):
         id="+",
         is_data=False,
         datasets=tt_datasets,
+        tags={"tt", "tautau_genuine"},
         aux={
             "special_selections": [tautau_from_genuine_tau_selection],
             "special_weights": special_weights,
@@ -116,7 +118,7 @@ def add_tt_processes(config: Config):
         id="+",
         is_data=False,
         datasets=tt_datasets,
-        tags={"jetfakes"},
+        tags={"tt", "tautau_jetfakes"},
         aux={
             "special_selections": [tautau_from_jet_fake_selection],
             "special_weights": special_weights,
@@ -130,6 +132,7 @@ def add_tt_processes(config: Config):
         id="+",
         is_data=False,
         datasets=tt_datasets,
+        tags={"tt", "tautau_remaining"},
         aux={
             "special_selections": [tautau_from_remaining_selection],
             "special_weights": special_weights,
@@ -202,6 +205,7 @@ def add_single_t_processes(config: Config):
         id="+",
         is_data=False,
         datasets=single_t_datasets,
+        tags={"tautau_genuine"},
         aux={
             "special_selections": [tautau_from_genuine_tau_selection],
         },
@@ -213,7 +217,7 @@ def add_single_t_processes(config: Config):
         id="+",
         is_data=False,
         datasets=single_t_datasets,
-        tags={"jetfakes"},
+        tags={"tautau_jetfakes"},
         aux={
             "special_selections": [tautau_from_jet_fake_selection],
         },
@@ -226,7 +230,7 @@ def add_single_t_processes(config: Config):
         id="+",
         is_data=False,
         datasets=single_t_datasets,
-        tags={"jetfakes"},
+        tags={"tautau_remaining"},
         aux={
             "special_selections": [tautau_from_remaining_selection],
         },
@@ -302,6 +306,7 @@ def add_dy_processes(config: Config):
         id="+",
         is_data=False,
         datasets=dy_2e_2mu_datasets,
+        tags={"dy", "ee", "mumu", "tautau_genuine"},
         aux={
             "special_selections": [
                 z_ee_mumu_gen_selection,
@@ -315,6 +320,7 @@ def add_dy_processes(config: Config):
         id="+",
         is_data=False,
         datasets=dy_2tau_datasets,
+        tags={"dy", "tautau", "tautau_genuine"},
         aux={
             "special_selections": [
                 z_tautau_gen_selection,
@@ -332,7 +338,7 @@ def add_dy_processes(config: Config):
         id="+",
         is_data=False,
         datasets=dy_2e_2mu_datasets,
-        tags={"jetfakes"},
+        tags={"dy", "ee", "mumu", "tautau_jetfakes"},
         aux={
             "special_selections": [
                 z_ee_mumu_gen_selection,
@@ -349,7 +355,7 @@ def add_dy_processes(config: Config):
         id="+",
         is_data=False,
         datasets=dy_2tau_datasets,
-        tags={"jetfakes"},
+        tags={"dy", "tautau", "tautau_jetfakes"},
         aux={
             "special_selections": [
                 z_tautau_gen_selection,
@@ -368,6 +374,7 @@ def add_dy_processes(config: Config):
         id="+",
         is_data=False,
         datasets=dy_2e_2mu_datasets,
+        tags={"dy", "ee", "mumu", "tautau_remaining"},
         aux={
             "special_selections": [
                 z_ee_mumu_gen_selection,
@@ -386,6 +393,7 @@ def add_dy_processes(config: Config):
         id="+",
         is_data=False,
         datasets=dy_2tau_datasets,
+        tags={"dy", "tautau", "tautau_remaining"},
         aux={
             "special_selections": [
                 z_tautau_gen_selection,
@@ -442,6 +450,7 @@ def add_w_processes(config: Config):
         id="+",
         is_data=False,
         datasets=w_lnu_datasets,
+        tags={"tautau_genuine"},
         aux={
             "special_selections": [
                 tautau_from_genuine_tau_selection,
@@ -455,7 +464,7 @@ def add_w_processes(config: Config):
         id="+",
         is_data=False,
         datasets=w_lnu_datasets,
-        tags={"jetfakes"},
+        tags={"tautau_jetfakes"},
         aux={
             "special_selections": [
                 tautau_from_jet_fake_selection,
@@ -470,6 +479,7 @@ def add_w_processes(config: Config):
         id="+",
         is_data=False,
         datasets=w_lnu_datasets,
+        tags={"tautau_remaining"},
         aux={
             "special_selections": [
                 tautau_from_remaining_selection,
@@ -525,6 +535,7 @@ def add_vv_processes(config: Config):
         id="+",
         is_data=False,
         datasets=vv_datasets,
+        tags={"tautau_remaining"},
         aux={
             "special_selections": [
                 tautau_from_remaining_selection,
@@ -577,6 +588,7 @@ def add_single_h_processes(config: Config):
         id="+",
         is_data=False,
         datasets=single_h_datasets,
+        tags={"tautau_genuine"},
         aux={
             "special_selections": [tautau_from_genuine_tau_selection],
         },
@@ -588,7 +600,7 @@ def add_single_h_processes(config: Config):
         id="+",
         is_data=False,
         datasets=single_h_datasets,
-        tags={"jetfakes"},
+        tags={"tautau_jetfakes"},
         aux={
             "special_selections": [tautau_from_jet_fake_selection],
         },
@@ -601,6 +613,7 @@ def add_single_h_processes(config: Config):
         id="+",
         is_data=False,
         datasets=single_h_datasets,
+        tags={"tautau_remaining"},
         aux={
             "special_selections": [tautau_from_remaining_selection],
         },
@@ -704,4 +717,3 @@ def add_processes(config: Config):
 
     # Processes representing data-driven estimates
     add_data_driven_processes(config)
-
