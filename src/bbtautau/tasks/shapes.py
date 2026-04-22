@@ -1,0 +1,155 @@
+import inspect
+from law import CSVParameter
+from luigi import IntParameter, Parameter
+from ntuple_processor import UnitManager, GraphManager, RunManager
+
+from bbtautau.process_spec import ProcessSpec
+from bbtautau.shapes import (
+    create_ntuple_processor_datasets,
+    create_ntuple_processor_units,
+    has_all_shapes,
+)
+from bbtautau.tasks.base.tasks import BaseTask
+from bbtautau.tasks.xsec_friends import XSecFriend
+from bbtautau.tasks.base.mixins import VariablesMixin
+from bbtautau.util import load_object
+
+
+class Shapes(BaseTask, VariablesMixin):
+
+    ntuple_tag = Parameter(
+        description="Version tag for the ntuple production.",
+    )
+
+    shapes_tag = Parameter(
+        description="Version tag for the shape production.",
+    )
+
+    ntuple_base_dir = Parameter(
+        description="Base directory of the ntuples.",
+    )
+
+    process_spec = Parameter(
+        description="Path to the process specification file.",
+    )
+
+    friend_names = CSVParameter(
+        description="List friend trees, which shall be included.",
+    )
+
+    selection_func = Parameter(
+        description="Module path to the selection",
+    )
+
+    optimization_level = IntParameter(
+        description="Level of optimization for the graph manager.",
+        default=0,
+    )
+
+    np_workers = IntParameter(
+        description="Number of parallel workers used for ntuple processor",
+        default=1,
+    )
+
+    np_threads = IntParameter(
+        description=(
+            "Number of parallel threads within a worker used for ntuple "
+            + "processor"
+        ),
+        default=1,
+    )
+
+    def requires(self):
+        return {
+            "XSecFriend": XSecFriend.req(self, channel=self.channel_inst.name),
+        }
+
+    def output(self):
+        return self.local_target(
+            self.shapes_tag,
+            self.campaign_inst.name,
+            self.category_inst.name,
+            "shapes.root",
+        )
+
+    def complete(self):
+        is_complete = super().complete()
+        if not is_complete:
+            return is_complete
+
+        # Load the process specification
+        process_spec = ProcessSpec(
+            process_spec_file=self.process_spec,
+            config=self.config_inst,
+            channel=self.channel_inst,
+        )
+
+        # Check if all shapes exist
+        all_exist = has_all_shapes(
+            self.output().path,
+            process_spec,
+            self.campaign_inst,
+            self.category_inst,
+            self.variable_insts,
+        )
+
+        return all_exist
+
+
+    def run(self):
+        # Load the selection and weight functions
+        selection_func = load_object(self.selection_func)
+
+        # Load the process specification
+        process_spec = ProcessSpec(
+            process_spec_file=self.process_spec,
+            config=self.config_inst,
+            channel=self.channel_inst,
+        )
+
+        # Create the datasets for the ntuple processor
+        np_datasets = create_ntuple_processor_datasets(
+            self.campaign_inst,
+            self.channel_inst,
+            process_spec,
+            self.ntuple_base_dir,
+            self.ntuple_tag,
+            self.shapes_tag,
+            self.friend_names,
+        )
+
+        # Create the histogram units for the ntuple processor
+        # TODO add systematic variations
+        np_units = create_ntuple_processor_units(
+            process_spec,
+            selection_func,
+            np_datasets,
+            self.analysis_inst,
+            self.config_inst,
+            self.campaign_inst,
+            self.channel_inst,
+            self.category_inst,
+            self.variable_insts,
+        )
+
+        # Create the unit manager and book actions to perform
+        unit_manager = UnitManager()
+        unit_manager.book(np_units, [], enable_check=True)
+
+        # Create the graph manager
+        graph_manager = GraphManager(unit_manager.booked_units, True)
+        graph_manager.optimize(self.optimization_level)
+        graphs = graph_manager.graphs
+        for graph in graphs:
+            print(f"{graph}")
+
+        # Run the graphs
+        if not self.output().parent.exists():
+            self.output().parent.touch()
+        run_manager = RunManager(graphs)
+        run_manager.run_locally(
+            self.output().path,
+            self.np_workers,
+            self.np_threads,
+        )
+
