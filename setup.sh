@@ -8,12 +8,15 @@ main () {
 
     # Important paths of this project
     export BBTT_BASE="${this_dir}"
+    export BBTT_DATA="${BBTT_BASE}/data/output"
 
     # Activate the micromamba enviroment
     # TODO temporary solution, could be refined by automatically install the
     # enviroment
     micromamba activate bbtautau
+    #source /cvmfs/sft.cern.ch/lcg/views/LCG_109/x86_64-el9-gcc15-opt/setup.sh
 
+    export PYTHONPATH="${BBTT_BASE}/src:${BBTT_BASE}:${PYTHONPATH}"
     # law setup
     export LAW_HOME="${LAW_HOME:-${BBTT_BASE}/.law}"
     export LAW_CONFIG_FILE="${LAW_CONFIG_FILE:-${BBTT_BASE}/law.cfg}"
