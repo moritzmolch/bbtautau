@@ -12,15 +12,15 @@ from bbtautau.ntuples.friends import XSecFriendProducer
 class XSecFriend(BaseTask, law.LocalWorkflow, ChannelMixin):
 
     ntuple_tag = Parameter(
-        description="Version tag for the ntuple production."
+        description="Version tag for the ntuple production.",
     )
 
     ntuple_base_dir = Parameter(
-        description="Base directory of the ntuples."
+        description="Base directory of the ntuples.",
     )
 
     process_spec = Parameter(
-        description="Path to the process specification file."
+        description="Path to the process specification file.",
     )
 
     def create_branch_map(self):
