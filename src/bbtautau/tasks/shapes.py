@@ -98,6 +98,7 @@ class Shapes(BaseTask, VariablesMixin):
             self.campaign_inst,
             self.category_inst,
             self.variable_insts,
+            variations=self.variations,
         )
 
         return all_exist
