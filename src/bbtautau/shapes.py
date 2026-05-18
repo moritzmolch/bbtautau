@@ -123,6 +123,7 @@ def create_ntuple_processor_datasets(
             p.datasets.values()
             for g in process_spec.get_all_process_groups()
             for p in g.processes.values()
+            if not p.get_aux("skip_shapes", False)
         )
     ):
         if dataset.name in np_datasets:
@@ -269,7 +270,7 @@ def create_ntuple_processor_units(
             p
             for g in process_spec.get_all_process_groups()
             for p in g.processes.values()
-            )
+            if not p.get_aux("skip_shapes", False)
         )
         for dataset in process.datasets.values()
     ]
@@ -303,7 +304,7 @@ def has_all_shapes(
                 p
                 for g in process_spec.get_all_process_groups()
                 for p in g.processes.values()
-                )
+                if not p.get_aux("skip_shapes", False)
             )
             for dataset in process.datasets.values()
             for variable in variables.values()
