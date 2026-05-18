@@ -33,13 +33,13 @@ class XSecFriend(BaseTask, law.LocalWorkflow, ChannelMixin):
 
         # Get flat list of all datasets required by the process specs, only
         # include simulated samples
-        dataset_insts_gen = (
+        dataset_insts_gen = set((
             d
             for g in process_spec.get_all_process_groups()
             for p in g.processes.values()
             for d in p.datasets.values()
             if not d.is_data
-        )
+        ))
 
         # Create a branch for each dataset
         branch_map = {
