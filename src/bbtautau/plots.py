@@ -1,44 +1,58 @@
-import ROOT
 import re
+
+import ROOT
+
 from bbtautau.plot_util import plot as plotutil_plot
-from configuration.xyh_bbtautau.metadata.analysis import analysis
-from bbtautau.process_spec import ProcessSpec
-import matplotlib.pyplot as plt
 
 ROOT.TH1.AddDirectory(False)
 
 
 def add_th1(th1_list):
-    hist_base = th1_list[0]
-    if len(th1_list) > 1:
-        for hist_add in th1_list[1:]:
-            hist_base.Add(hist_add)
+    """Add TH1 histograms in `th1_list` and return the resulting histogram."""
+    # Catch cases where no histograms are given
+    if len(th1_list) == 0:
+        raise ValueError("Got list without any histograms.")
+
+    # Clone the first histogram and add the others to it
+    th1_iter = iter(th1_list)
+    hist_base = next(th1_iter).Clone()
+    for hist_add in th1_iter:
+        hist_base.Add(hist_add)
+
     return hist_base
 
 
 def load_histograms(histogram_file: str):
+    """Load histograms from `histogram_file` and structure them."""
     histograms = []
     rf = ROOT.TFile.Open(histogram_file, "READ")
     for key in rf.GetListOfKeys():
         key = key.GetTitle()
-        match = re.match(r"^([^#]*)#([^#]*)-([^#]*)-([^#]*)#([^#]*)#([^#]*)", key)
+        match = re.match(
+            r"^([^#]*)#([^#]*)-([^#]*)-([^#]*)-([^#]*)#([^#]*)#([^#]*)",
+            key,
+        )
         if not match:
             raise Exception()
         dataset = match.group(1)
-        category = match.group(2)
-        process = match.group(3)
-        dataset = match.group(4)
-        shift = match.group(5)
-        variable = match.group(6)
-        histograms.append({
-            "key": key,
-            "dataset": dataset,
-            "category": category,
-            "process": process,
-            "shift": shift,
-            "variable": variable,
-            "histogram": rf.Get(key),
-        })
+        channel = match.group(2)
+        category = match.group(3)
+        process = match.group(4)
+        dataset = match.group(5)
+        variation = match.group(6)
+        variable = match.group(7)
+        histograms.append(
+            {
+                "key": key,
+                "dataset": dataset,
+                "channel": channel,
+                "category": category,
+                "process": process,
+                "variation": variation,
+                "variable": variable,
+                "histogram": rf.Get(key),
+            }
+        )
     return histograms
 
 
@@ -48,6 +62,7 @@ def prepare_histograms(
     category,
     variables,
 ):
+    """Prepare histograms for plotting."""
     prepared_histograms = {}
     for variable in variables:
         prepared_histograms[variable.name] = {}
@@ -64,22 +79,30 @@ def prepare_histograms(
                     "label": process_group.label,
                 }
                 if process_type == "signals" and process_group.scale_factor is not None:
-                    plot_kwargs["scale_factor"] = process_group.scale_factor[category.channel.name]
+                    plot_kwargs["scale_factor"] = process_group.scale_factor[
+                        category.channel.name
+                    ]
 
                 # Sum up all histogram of a process group
-                histogram = add_th1([
-                    h["histogram"]
-                    for h in histograms
-                    for process in process_group.processes
-                    if (
-                        h["category"] == category.name
-                        and h["process"] == process.name
-                        and h["variable"] == variable.name
-                    )
-                ])
+                # Only keep nominal variations for control plots
+                histogram = add_th1(
+                    [
+                        h["histogram"]
+                        for h in histograms
+                        for process in process_group.processes
+                        if (
+                            h["category"] == category.name
+                            and h["process"] == process.name
+                            and h["variable"] == variable.name
+                            and h["variation"] == "Nominal"
+                        )
+                    ]
+                )
 
                 # Add information to the full histograms dictionary
-                prepared_histograms[variable.name][process_type].append((histogram, plot_kwargs))
+                prepared_histograms[variable.name][process_type].append(
+                    (histogram, plot_kwargs)
+                )
 
     return prepared_histograms
 
@@ -90,7 +113,7 @@ def plot(
     category,
     variable,
 ):
-
+    """Invoke the plotting function for control plots."""
     fig, ax = plotutil_plot(
         histograms[variable.name]["data"][0],
         histograms[variable.name]["backgrounds"],
@@ -110,4 +133,3 @@ def plot(
     )
 
     return fig, ax
-
