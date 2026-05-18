@@ -1,7 +1,5 @@
-import inspect
 from law import CSVParameter
-from luigi import IntParameter, Parameter
-from ntuple_processor import UnitManager, GraphManager, RunManager
+from luigi import BoolParameter, IntParameter, Parameter
 
 from bbtautau.process_spec import ProcessSpec
 from bbtautau.shapes import (
@@ -9,14 +7,19 @@ from bbtautau.shapes import (
     create_ntuple_processor_units,
     has_all_shapes,
 )
+from bbtautau.tasks.base.mixins import VariablesMixin
 from bbtautau.tasks.base.tasks import BaseTask
 from bbtautau.tasks.xsec_friends import XSecFriend
-from bbtautau.tasks.base.mixins import VariablesMixin
 from bbtautau.util import load_object
+from configuration.helper_collection import PreserveROOTPathsAsStrings
+from configuration.ntuple_processor_config_helper import (
+    add_paths,
+    get_config_formatter,
+)
+from ntuple_processor import GraphManager, RunManager, UnitManager
 
 
 class Shapes(BaseTask, VariablesMixin):
-
     ntuple_tag = Parameter(
         description="Version tag for the ntuple production.",
     )
@@ -47,9 +50,7 @@ class Shapes(BaseTask, VariablesMixin):
     )
 
     variations = CSVParameter(
-        description=(
-            "List of histogram variations to process",
-        ),
+        description=("List of histogram variations to process",),
         default=[],
     )
 
@@ -60,10 +61,16 @@ class Shapes(BaseTask, VariablesMixin):
 
     np_threads = IntParameter(
         description=(
-            "Number of parallel threads within a worker used for ntuple "
-            + "processor"
+            "Number of parallel threads within a worker used for ntuple " + "processor"
         ),
         default=1,
+    )
+
+    cut_and_weight_config = BoolParameter(
+        description=(
+            "Flag for not processing the shapes, but only creating a YAML "
+            + " file with the cut and weight configuration."
+        )
     )
 
     def requires(self):
@@ -72,16 +79,27 @@ class Shapes(BaseTask, VariablesMixin):
         }
 
     def output(self):
-        return self.local_target(
-            self.shapes_tag,
-            self.campaign_inst.name,
-            self.category_inst.name,
-            "shapes.root",
-        )
+        if self.cut_and_weight_config:
+            return self.local_target(
+                self.shapes_tag,
+                self.campaign_inst.name,
+                self.category_inst.name,
+                "selection_and_weights.yaml",
+            )
+        else:
+            return self.local_target(
+                self.shapes_tag,
+                self.campaign_inst.name,
+                self.category_inst.name,
+                "shapes.root",
+            )
 
     def complete(self):
         is_complete = super().complete()
         if not is_complete:
+            return is_complete
+
+        if self.cut_and_weight_config:
             return is_complete
 
         # Load the process specification
@@ -153,13 +171,44 @@ class Shapes(BaseTask, VariablesMixin):
         graph_manager.optimize(self.optimization_level)
         graphs = graph_manager.graphs
 
-        # Run the graphs
-        if not self.output().parent.exists():
-            self.output().parent.touch()
-        run_manager = RunManager(graphs)
-        run_manager.run_locally(
-            self.output().path,
-            self.np_workers,
-            self.np_threads,
-        )
+        if self.cut_and_weight_config:
+            # Run the graphs to create the configuration
+            if not self.output().parent.exists():
+                self.output().parent.touch()
+            run_manager = RunManager(
+                graphs,
+                create_histograms=False,
+                create_config=True,
+                config_formatter=get_config_formatter(era=self.campaign_inst.name),
+            )
+            run_manager.nthreads = 1
 
+            # Create config for each graph in the manager
+            for graph in graphs:
+                run_manager.node_to_root(graph)
+                add_paths(
+                    graph=graph,
+                    channel=self.channel_inst.name,
+                    era=self.campaign_inst.name,
+                    r_manager=run_manager,
+                )
+            config = run_manager.config.regular
+
+            # Dump the configuration to YAML file
+            self.output().dump(
+                config,
+                formatter="yaml",
+                default_flow_style=False,
+                Dumper=PreserveROOTPathsAsStrings,
+            )
+
+        else:
+            # Run the graphs
+            if not self.output().parent.exists():
+                self.output().parent.touch()
+            run_manager = RunManager(graphs)
+            run_manager.run_locally(
+                self.output().path,
+                self.np_workers,
+                self.np_threads,
+            )
