@@ -11,7 +11,7 @@ from copy import deepcopy
 import logging
 import itertools
 
-from config.logging_setup_configs import setup_logging
+from configuration.logging_setup_configs import setup_logging
 
 logger = setup_logging(logger=logging.getLogger(__name__))
 
@@ -114,7 +114,7 @@ def filter_friends(dataset, friend):
             pass
         else:
             return False
-    elif re.match("data", dataset.lower()):
+    elif re.match("data", dataset.lower()) or dataset in ["egamma", "muon", "tau"]:
         if "xsec" in friend:
             return False
     elif re.match("emb", dataset.lower()):
