@@ -148,12 +148,17 @@ def create_ntuple_processor_selection(
     category: Category,
     process: Process,
     dataset: Dataset,
+    shifts: Shift | None = None,
+    variations: list[str] | None = None,
 ):
     """
     Use information from the :py:class:`order.Dataset` object to construct the
     corresponding :py:class:`ntuple_processor.utils.Dataset` object for the
     :py:module:`ntuple_processor` module.
     """
+
+    # Ensure that variations is a list
+    variations = variations if variations is not None else []
 
     # Create the analysis context
     analysis_context = AnalysisContext(
@@ -168,9 +173,15 @@ def create_ntuple_processor_selection(
 
     # Get dictionaries with selections and weights for the given analysis
     # context
-    selections = selection_func(analysis_context)
+    selections, all_variations = selection_func(analysis_context)
 
-    return selections
+    s, v = selections, {
+        k: v
+        for k, v in all_variations.items()
+        if k in variations
+    }
+
+    return s, v
 
 
 def create_ntuple_processor_unit(
@@ -185,11 +196,12 @@ def create_ntuple_processor_unit(
     dataset: Dataset,
     variables: UniqueObjectIndex,
     shifts: UniqueObjectIndex | None = None,
+    variations: list[str] | None = None,
 ):
     # Create the ntuple processor selection object from the selection and
     # weight functions
     # TODO Add systematic variations
-    np_selection = create_ntuple_processor_selection(
+    np_selection, np_variations = create_ntuple_processor_selection(
         selection_func,
         analysis,
         config,
@@ -198,6 +210,8 @@ def create_ntuple_processor_unit(
         category,
         process,
         dataset,
+        shifts=shifts,
+        variations=variations,
     )
 
     # Get the ntuple processor dataset for the current dataset
@@ -220,7 +234,7 @@ def create_ntuple_processor_unit(
         actions=histograms,
     )
 
-    return unit
+    return unit, np_variations
 
 
 def create_ntuple_processor_units(
@@ -234,6 +248,7 @@ def create_ntuple_processor_units(
     category: Category,
     variables: UniqueObjectIndex,
     shifts: UniqueObjectIndex | None = None,
+    variations: list[str] | None = None,
 ):
     units = [
         create_ntuple_processor_unit(
@@ -248,11 +263,12 @@ def create_ntuple_processor_units(
             dataset,
             variables,
             shifts=shifts,
+            variations=variations,
         )
-        for process in chain.from_iterable(
-            (
-                g.processes.values()
-                for g in process_spec.get_all_process_groups()
+        for process in (
+            p
+            for g in process_spec.get_all_process_groups()
+            for p in g.processes.values()
             )
         )
         for dataset in process.datasets.values()
@@ -263,32 +279,36 @@ def create_ntuple_processor_units(
 
 def has_all_shapes(
     shapes_file: str,
-    process_spec,
-    campaign,
-    category,
-    variables,
-    shifts=None,
+    process_spec: ProcessSpec,
+    campaign: Campaign,
+    category: Category,
+    variables: UniqueObjectIndex,
+    shifts: list[Shift] | None = None,
+    variations: list[str] | None = None,
 ):
+    # Turn variations into a list
+    variations = variations if variations is not None else ["Nominal"]
+
     f = ROOT.TFile.Open(shapes_file, "READ")
     keys = [k.GetTitle() for k in f.GetListOfKeys()]
     all_exist = all(
         [
             (
                 dataset.name
-                + f"#{category.name}-{process.name}-{dataset.name}"
-                + "#Nominal"
+                + f"#{category.channel.name}-{category.name}-{process.name}-{dataset.name}"
+                + f"#{variation}"
                 + f"#{variable.name}"
             ) in keys
-            for process in chain.from_iterable(
-                (
-                    g.processes.values()
-                    for g in process_spec.get_all_process_groups()
+            for process in (
+                p
+                for g in process_spec.get_all_process_groups()
+                for p in g.processes.values()
                 )
             )
             for dataset in process.datasets.values()
             for variable in variables.values()
+            for variation in variations
         ]
     )
     f.Close()
     return all_exist
-
