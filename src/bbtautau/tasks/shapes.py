@@ -38,12 +38,19 @@ class Shapes(BaseTask, VariablesMixin):
     )
 
     selection_func = Parameter(
-        description="Module path to the selection",
+        description="Module path to the selection.",
     )
 
     optimization_level = IntParameter(
         description="Level of optimization for the graph manager.",
         default=0,
+    )
+
+    variations = CSVParameter(
+        description=(
+            "List of histogram variations to process",
+        ),
+        default=[],
     )
 
     np_workers = IntParameter(
@@ -95,7 +102,6 @@ class Shapes(BaseTask, VariablesMixin):
 
         return all_exist
 
-
     def run(self):
         # Load the selection and weight functions
         selection_func = load_object(self.selection_func)
@@ -119,7 +125,6 @@ class Shapes(BaseTask, VariablesMixin):
         )
 
         # Create the histogram units for the ntuple processor
-        # TODO add systematic variations
         np_units = create_ntuple_processor_units(
             process_spec,
             selection_func,
@@ -130,18 +135,22 @@ class Shapes(BaseTask, VariablesMixin):
             self.channel_inst,
             self.category_inst,
             self.variable_insts,
+            variations=self.variations,
         )
 
         # Create the unit manager and book actions to perform
         unit_manager = UnitManager()
-        unit_manager.book(np_units, [], enable_check=True)
+        for unit, variations in np_units:
+            unit_manager.book(
+                [unit],
+                variations=[v for v_list in variations.values() for v in v_list],
+                enable_check=True,
+            )
 
         # Create the graph manager
         graph_manager = GraphManager(unit_manager.booked_units, True)
         graph_manager.optimize(self.optimization_level)
         graphs = graph_manager.graphs
-        for graph in graphs:
-            print(f"{graph}")
 
         # Run the graphs
         if not self.output().parent.exists():
