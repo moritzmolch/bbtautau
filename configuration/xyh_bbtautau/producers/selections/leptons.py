@@ -204,12 +204,11 @@ def hadronic_taus(
         "tt": [1, 2],
     }
     if channel.name in indices:
-        for i in indices[channel.name]:
-            selections[f"tau{i}_pt_eta"] = tau_pt_eta_tpl.format(index=i)
-            selections[f"tau{i}_dm"] = tau_dm_tpl.format(index=i)
-            selections[f"tau{i}_id_vs_jet"] = id_vs_jet_tpl.format(index=i)
-            selections[f"tau{i}_id_vs_e"] = id_vs_e_tpl.format(index=i)
-            selections[f"tau{i}_id_vs_mu"] = id_vs_mu_tpl.format(index=i)
+        selections["tau_pt_eta"] = " && ".join((tau_pt_eta_tpl.format(index=i) for i in indices[channel.name]))
+        selections["tau_dm"] = " && ".join((tau_dm_tpl.format(index=i) for i in indices[channel.name]))
+        selections["tau_id_vs_jet"] = " && ".join((id_vs_jet_tpl.format(index=i) for i in indices[channel.name]))
+        selections["tau_id_vs_e"] = " && ".join((id_vs_e_tpl.format(index=i) for i in indices[channel.name]))
+        selections["tau_id_vs_mu"] = " && ".join((id_vs_mu_tpl.format(index=i) for i in indices[channel.name]))
 
     return selections
 
