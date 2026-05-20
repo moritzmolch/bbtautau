@@ -1,24 +1,23 @@
 from collections import OrderedDict
 from itertools import chain
 
+from bbtautau.shapes import AnalysisContext
 from configuration.xyh_bbtautau.producers.weights.event import (
-    pileup,
     normalization,
+    pileup,
 )
-
 from configuration.xyh_bbtautau.producers.weights.jets import b_jets
 from configuration.xyh_bbtautau.producers.weights.leptons import (
     electrons,
-    muons,
     hadronic_taus,
+    muons,
 )
-from configuration.xyh_bbtautau.producers.weights.triggers import triggers
 from configuration.xyh_bbtautau.producers.weights.processes import (
     top_pt_reweighting,
     tt_normalization,
     z_pt_reweighting,
 )
-from bbtautau.shapes import AnalysisContext
+from configuration.xyh_bbtautau.producers.weights.triggers import triggers
 
 
 def mc_weights(
