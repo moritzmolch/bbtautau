@@ -1,18 +1,20 @@
 from collections import OrderedDict
 from itertools import chain
-from order import Category, Channel
-from bbtautau.shapes import AnalysisContext
 
-from configuration.xyh_bbtautau.producers.selections.triggers import triggers
-from configuration.xyh_bbtautau.producers.selections.leptons import lepton_vetoes, ll_pair
-from configuration.xyh_bbtautau.producers.selections.jets import jet_vetomap, bb_pair
+from order import Category, Channel
+
+from bbtautau.shapes import AnalysisContext
 from configuration.xyh_bbtautau.producers.selections.gen import (
-    z_ee_mumu_gen_selection,
-    z_tautau_gen_selection,
     tautau_from_genuine_tau_selection,
     tautau_from_jet_fake_selection,
     tautau_from_remaining_selection,
 )
+from configuration.xyh_bbtautau.producers.selections.jets import bb_pair, jet_vetomap
+from configuration.xyh_bbtautau.producers.selections.leptons import (
+    lepton_vetoes,
+    ll_pair,
+)
+from configuration.xyh_bbtautau.producers.selections.triggers import triggers
 
 
 def modify_selection_for_abcd_categories(
@@ -36,7 +38,6 @@ def modify_selection_for_abcd_categories(
     #   electron ID (with isolation variables) at the 90% efficiency WP
     #   in the ee channel.
     if category.has_tag({"antiid"}):
-
         if channel.name in ["et", "mt", "tt"]:
             # Get the working points for the tau ID depending on the channel
             id_vs_jet_wp = channel.x.tau["id_vs_jet_wp"]
@@ -61,9 +62,7 @@ def modify_selection_for_abcd_categories(
                 "tt": 1,
             }
             i = indices[channel.name]
-            selections[f"tau{i}_id_vs_jet"] = antiid_vs_jet_tpl.format(
-                index=i
-            )
+            selections[f"tau{i}_id_vs_jet"] = antiid_vs_jet_tpl.format(index=i)
 
         if channel.name in ["em", "mm"]:
             # Add anti-isolation muon selection for
@@ -102,7 +101,6 @@ def modify_selection_for_fake_factor_categories(
     #   electron ID (with isolation variables) at the 90% efficiency WP
     #   in the ee channel.
     if category.has_tag({"antiid"}):
-
         if channel.name in ["et", "mt", "tt"]:
             # Get the working points for the tau ID depending on the channel
             id_vs_jet_wp = channel.x.tau["id_vs_jet_wp"]
@@ -127,9 +125,7 @@ def modify_selection_for_fake_factor_categories(
                 "tt": 1,
             }
             i = indices[channel.name]
-            selections[f"tau{i}_id_vs_jet"] = antiid_vs_jet_tpl.format(
-                index=i
-            )
+            selections[f"tau{i}_id_vs_jet"] = antiid_vs_jet_tpl.format(index=i)
 
         else:
             # Channels without a hadronic tau do not have such a region
@@ -144,16 +140,16 @@ def gen_selection(
     # Store for process-specific generator-level selections
     selections = OrderedDict()
 
-    # Add generator-level selection for DY -> ee and DY -> mumu processes
-    if (
-        analysis_context.process.has_tag({"dy", "ee"}, mode=all)
-        or analysis_context.process.has_tag({"dy", "mumu"}, mode=all)
-    ):
-        selections.update(z_ee_mumu_gen_selection(analysis_context))
+    # # Add generator-level selection for DY -> ee and DY -> mumu processes
+    # if (
+    #     analysis_context.process.has_tag({"dy", "ee"}, mode=all)
+    #     or analysis_context.process.has_tag({"dy", "mumu"}, mode=all)
+    # ):
+    #     selections.update(z_ee_mumu_gen_selection(analysis_context))
 
-    # Add generator-level selection for DY -> tautau processes
-    if analysis_context.process.has_tag({"dy", "tautau"}, mode=all):
-        selections.update(z_tautau_gen_selection(analysis_context))
+    # # Add generator-level selection for DY -> tautau processes
+    # if analysis_context.process.has_tag({"dy", "tautau"}, mode=all):
+    #     selections.update(z_tautau_gen_selection(analysis_context))
 
     # Add generator-level selections for the different tau decay modes for processes with hadronic taus
     if analysis_context.process.has_tag({"tautau_genuine"}):
@@ -195,14 +191,18 @@ def channel_selection(
     """
 
     # Concatenate base selections from sub-steps
-    selections = OrderedDict(list(chain(
-        # Chain the trigger, veto, dilepton, and di-b jet selections
-        triggers(analysis_context).items(),
-        lepton_vetoes(analysis_context).items(),
-        ll_pair(analysis_context).items(),
-        jet_vetomap(analysis_context).items(),
-        bb_pair(analysis_context).items(),
-    )))
+    selections = OrderedDict(
+        list(
+            chain(
+                # Chain the trigger, veto, dilepton, and di-b jet selections
+                triggers(analysis_context).items(),
+                lepton_vetoes(analysis_context).items(),
+                ll_pair(analysis_context).items(),
+                jet_vetomap(analysis_context).items(),
+                bb_pair(analysis_context).items(),
+            )
+        )
+    )
 
     # Category-specific modifications
     if analysis_context.category.has_tag({"signal_cat"}):
@@ -226,4 +226,3 @@ def channel_selection(
         )
 
     return selections
-
