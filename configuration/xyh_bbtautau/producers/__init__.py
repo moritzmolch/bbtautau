@@ -3,6 +3,10 @@ from configuration.xyh_bbtautau.producers.selections.base import (
     gen_selection,
     channel_selection,
 )
+from configuration.xyh_bbtautau.producers.variations.fake_factors import (
+    fake_factors,
+)
+
 from ntuple_processor.utils import Selection
 from bbtautau.shapes import AnalysisContext
 
@@ -21,7 +25,7 @@ def default_selection(
 
     selections = [
         Selection(
-            name=analysis_context.category.name,
+            name=f"{analysis_context.channel.name}-{analysis_context.category.name}",
             cuts=[(expression, name) for name, expression in ch_selection.items()],
         ),
         Selection(
@@ -31,5 +35,10 @@ def default_selection(
         ),
     ]
 
-    return selections
+    # Index all variation functions of this analysis
+    variations = {
+        "fake_factors": fake_factors(analysis_context),
+    }
+
+    return selections, variations
 
