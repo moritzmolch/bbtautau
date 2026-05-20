@@ -156,6 +156,10 @@ def add_variables(
             "ee": r"PUPPI MET $\phi$",
             "mm": r"PUPPI MET $\phi$",
         },
+        "metSumEt": {
+            c: r"Scalar transverse energy sum"
+            for c in ["et", "mt", "tt", "em", "ee", "mm"]
+        },
         "mt_1": {
             "et": r"Transverse mass $m_{\text{T}}(\text{e}, p_{\text{T}}^{\text{miss}})$",
             "mt": r"Transverse mass $m_{\text{T}}(\mu, p_{\text{T}}^{\text{miss}})$",
@@ -204,6 +208,22 @@ def add_variables(
             c: r"Subleading jet $\phi$"
             for c in ["et", "mt", "tt", "em", "ee", "mm"]
         },
+        "jtag_value_1": {
+            c: r"Leading jet b tagging score"
+            for c in ["et", "mt", "tt", "em", "ee", "mm"]
+        },
+        "jtag_value_2": {
+            c: r"Subleading jet b tagging score"
+            for c in ["et", "mt", "tt", "em", "ee", "mm"]
+        },
+        "mjj": {
+            c: r"Leading dijet system mass"
+            for c in ["et", "mt", "tt", "em", "ee", "mm"]
+        },
+        "pt_dijet": {
+            c: r"Leading dijet system $p_{\text{T}}$"
+            for c in ["et", "mt", "tt", "em", "ee", "mm"]
+        },
         "bpair_pt_1": {
             c: r"First b candidate $p_{\text{T}}$"
             for c in ["et", "mt", "tt", "em", "ee", "mm"]
@@ -240,9 +260,37 @@ def add_variables(
             c: r"bb candidate mass"
             for c in ["et", "mt", "tt", "em", "ee", "mm"]
         },
+        "bpair_pt_dijet": {
+            c: r"bb candidate $p_{\text{T}}$"
+            for c in ["et", "mt", "tt", "em", "ee", "mm"]
+        },
         "bpair_deltaR": {
             c: r"$\Delta R(\text{b}_1, \text{b}_2)$"
             for c in ["et", "mt", "tt", "em", "ee", "mm"]
+        },
+        "mass_tautaubb": {
+            "et": r"bb$\tau\tau$ mass (bb+$\tau\tau$+$\vec{p}_{\text{T}}^{\text{miss}}$)",
+            "mt": r"bb$\tau\tau$ mass (bb+$\tau\tau$+$\vec{p}_{\text{T}}^{\text{miss}}$)",
+            "tt": r"bb$\tau\tau$ mass (bb+$\tau\tau$+$\vec{p}_{\text{T}}^{\text{miss}}$)",
+            "em": "",
+            "ee": "",
+            "mm": "",
+        },
+        "pt_tautaubb": {
+            "et": r"bb$\tau\tau$ $p_{\text{T}}$ (bb+$\tau\tau$+$\vec{p}_{\text{T}}^{\text{miss}}$)",
+            "mt": r"bb$\tau\tau$ $p_{\text{T}}$ (bb+$\tau\tau$+$\vec{p}_{\text{T}}^{\text{miss}}$)",
+            "tt": r"bb$\tau\tau$ $p_{\text{T}}$ (bb+$\tau\tau$+$\vec{p}_{\text{T}}^{\text{miss}}$)",
+            "em": "",
+            "ee": "",
+            "mm": "",
+        },
+        "pt_tautau": {
+            "et": r"$\tau\tau$ $p_{\text{T}}$ ($\tau\tau$+$\vec{p}_{\text{T}}^{\text{miss}}$)",
+            "mt": r"$\tau\tau$ $p_{\text{T}}$ ($\tau\tau$+$\vec{p}_{\text{T}}^{\text{miss}}$)",
+            "tt": r"$\tau\tau$ $p_{\text{T}}$ ($\tau\tau$+$\vec{p}_{\text{T}}^{\text{miss}}$)",
+            "em": "",
+            "ee": "",
+            "mm": "",
         },
         "n_jets": {
             c: r"Number of jets" for c in ["et", "mt", "tt", "em", "ee", "mm"]
@@ -414,6 +462,14 @@ def add_variables(
             "ee": linspace(-pi, pi, 41, endpoint=True).tolist(),
             "mm": linspace(-pi, pi, 41, endpoint=True).tolist(),
         },
+        "metSumEt": {
+            "et": arange(0, 1010, 10).tolist(),
+            "mt": arange(0, 1010, 10).tolist(),
+            "tt": arange(0, 1020, 20).tolist(),
+            "em": arange(0, 1010, 10).tolist(),
+            "ee": arange(0, 1010, 10).tolist(),
+            "mm": arange(0, 1010, 10).tolist(),
+        },
         "mt_1": {
             "et": arange(0, 185, 5).tolist(),
             "mt": arange(0, 185, 5).tolist(),
@@ -485,6 +541,38 @@ def add_variables(
             "em": linspace(-pi, pi, 41, endpoint=True).tolist(),
             "ee": linspace(-pi, pi, 41, endpoint=True).tolist(),
             "mm": linspace(-pi, pi, 41, endpoint=True).tolist(),
+        },
+        "jtag_value_1": {
+            "et": arange(0.0, 1.025, 0.025).tolist(),
+            "mt": arange(0.0, 1.025, 0.025).tolist(),
+            "tt": arange(0.0, 1.05, 0.05).tolist(),
+            "em": arange(0.0, 1.025, 0.025).tolist(),
+            "ee": arange(0.0, 1.025, 0.025).tolist(),
+            "mm": arange(0.0, 1.025, 0.025).tolist(),
+        },
+        "jtag_value_2": {
+            "et": arange(0.0, 1.025, 0.025).tolist(),
+            "mt": arange(0.0, 1.025, 0.025).tolist(),
+            "tt": arange(0.0, 1.05, 0.05).tolist(),
+            "em": arange(0.0, 1.025, 0.025).tolist(),
+            "ee": arange(0.0, 1.025, 0.025).tolist(),
+            "mm": arange(0.0, 1.025, 0.025).tolist(),
+        },
+        "mjj": {
+            "et": arange(0, 1050, 50).tolist(),
+            "mt": arange(0, 1050, 50).tolist(),
+            "tt": arange(0, 1100, 100).tolist(),
+            "em": arange(0, 1050, 50).tolist(),
+            "ee": arange(0, 1050, 50).tolist(),
+            "mm": arange(0, 1050, 50).tolist(),
+        },
+        "pt_dijet": {
+            "et": arange(0, 510, 10).tolist(),
+            "mt": arange(0, 510, 10).tolist(),
+            "tt": arange(0, 520, 20).tolist(),
+            "em": arange(0, 510, 10).tolist(),
+            "ee": arange(0, 510, 10).tolist(),
+            "mm": arange(0, 510, 10).tolist(),
         },
         "bpair_pt_1": {
             "et": arange(0, 265, 5).tolist(),
@@ -558,6 +646,14 @@ def add_variables(
             "ee": arange(0, 1050, 50).tolist(),
             "mm": arange(0, 1050, 50).tolist(),
         },
+        "bpair_pt_dijet": {
+            "et": arange(0, 550, 50).tolist(),
+            "mt": arange(0, 550, 50).tolist(),
+            "tt": arange(0, 600, 100).tolist(),
+            "em": arange(0, 550, 50).tolist(),
+            "ee": arange(0, 550, 50).tolist(),
+            "mm": arange(0, 550, 50).tolist(),
+        },
         "bpair_deltaR": {
             "et": arange(0, 6.2, 0.2).tolist(),
             "mt": arange(0, 6.2, 0.2).tolist(),
@@ -565,6 +661,30 @@ def add_variables(
             "em": arange(0, 6.2, 0.2).tolist(),
             "ee": arange(0, 6.2, 0.2).tolist(),
             "mm": arange(0, 6.2, 0.2).tolist(),
+        },
+        "mass_tautaubb": {
+            "et": arange(0, 1010, 10).tolist(),
+            "mt": arange(0, 1010, 10).tolist(),
+            "tt": arange(0, 1020, 20).tolist(),
+            "em": [],
+            "ee": [],
+            "mm": [],
+        },
+        "pt_tautaubb": {
+            "et": arange(0, 185, 5).tolist(),
+            "mt": arange(0, 185, 5).tolist(),
+            "tt": arange(0, 190, 10).tolist(),
+            "em": [],
+            "ee": [],
+            "mm": [],
+        },
+        "pt_tautau": {
+            "et": arange(0, 185, 5).tolist(),
+            "mt": arange(0, 185, 5).tolist(),
+            "tt": arange(0, 190, 10).tolist(),
+            "em": [],
+            "ee": [],
+            "mm": [],
         },
         "n_jets": {
             c: arange(-0.5, 8.5, 1.0).tolist()
@@ -619,6 +739,7 @@ def add_variables(
         "deltaR_ditaupair": None,
         "met": "GeV",
         "metphi": None,
+        "metSumEt": "GeV",
         "mt_1": "GeV",
         "mt_2": "GeV",
         "mt_tot": "GeV",
@@ -628,6 +749,10 @@ def add_variables(
         "jeta_2": None,
         "jphi_1": None,
         "jphi_2": None,
+        "jtag_value_1": None,
+        "jtag_value_2": None,
+        "mjj": "GeV",
+        "pt_dijet": "GeV",
         "bpair_pt_1": "GeV",
         "bpair_pt_2": "GeV",
         "bpair_eta_1": None,
@@ -637,7 +762,11 @@ def add_variables(
         "bpair_btag_value_1": None,
         "bpair_btag_value_2": None,
         "bpair_m_inv": "GeV",
+        "bpair_pt_dijet": "GeV",
         "bpair_deltaR": None,
+        "mass_tautaubb": "GeV",
+        "pt_tautaubb": "GeV",
+        "pt_tautau": "GeV",
         "n_jets": None,
         "n_bjets": None,
         "output_score_0": None,
