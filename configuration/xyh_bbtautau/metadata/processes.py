@@ -4,30 +4,6 @@ from configuration.xyh_bbtautau.constants import (
     XYH_MASS_POINTS,
     XYH_DECAY_MODES,
 )
-# from configuration.xyh_bbtautau.producers.weights.processes import (
-#     z_pt_reweighting_weights,
-#     tt_top_pt_reweighting_weights,
-#     tt_normalization_weights,
-# )
-# from configuration.xyh_bbtautau.producers.weights.dy import (
-#     z_ee_mumu_gen_selection,
-#     z_tautau_gen_selection,
-# )
-# from configuration.xyh_bbtautau.producers.selections.gen_taus import (
-#     tautau_from_genuine_tau_selection,
-#     tautau_from_jet_fake_selection,
-#     tautau_from_remaining_selection,
-# )
-
-
-z_pt_reweighting_weights = "DUMMY"
-tt_top_pt_reweighting_weights = "DUMMY"
-tt_normalization_weights = "DUMMY"
-z_ee_mumu_gen_selection = "DUMMY"
-z_tautau_gen_selection = "DUMMY"
-tautau_from_genuine_tau_selection = "DUMMY"
-tautau_from_jet_fake_selection = "DUMMY"
-tautau_from_remaining_selection = "DUMMY"
 
 
 def add_data_processes(config: Config):
@@ -93,23 +69,13 @@ def add_tt_processes(config: Config):
         for dataset_name in ["tt_2l2nu", "tt_lnu2q", "tt_4q"]
     ]
 
-    # Operations for tt samples
-    special_weights = [
-        tt_top_pt_reweighting_weights,
-        tt_normalization_weights,
-    ]
-
     # tt production -- genuine tau tau pairs
     config.add_process(
         name="tt_tautau",
         id="+",
         is_data=False,
         datasets=tt_datasets,
-        tags={"tt", "tautau_genuine"},
-        aux={
-            "special_selections": [tautau_from_genuine_tau_selection],
-            "special_weights": special_weights,
-        },
+        tags={"background", "tt", "tautau_genuine"},
     )
 
     # tt production -- jets faking hadronic taus
@@ -118,11 +84,7 @@ def add_tt_processes(config: Config):
         id="+",
         is_data=False,
         datasets=tt_datasets,
-        tags={"tt", "tautau_jetfakes"},
-        aux={
-            "special_selections": [tautau_from_jet_fake_selection],
-            "special_weights": special_weights,
-        },
+        tags={"background", "tt", "tautau_jetfakes"},
     )
 
     # tt production -- remaining events (leptons faking hadronic taus, prompt
@@ -132,11 +94,7 @@ def add_tt_processes(config: Config):
         id="+",
         is_data=False,
         datasets=tt_datasets,
-        tags={"tt", "tautau_remaining"},
-        aux={
-            "special_selections": [tautau_from_remaining_selection],
-            "special_weights": special_weights,
-        },
+        tags={"background", "tt", "tautau_remaining"},
     )
 
 
@@ -205,10 +163,7 @@ def add_single_t_processes(config: Config):
         id="+",
         is_data=False,
         datasets=single_t_datasets,
-        tags={"tautau_genuine"},
-        aux={
-            "special_selections": [tautau_from_genuine_tau_selection],
-        },
+        tags={"background", "single_t", "tautau_genuine"},
     )
 
     # Single top production -- jets faking hadronic taus
@@ -217,10 +172,7 @@ def add_single_t_processes(config: Config):
         id="+",
         is_data=False,
         datasets=single_t_datasets,
-        tags={"tautau_jetfakes"},
-        aux={
-            "special_selections": [tautau_from_jet_fake_selection],
-        },
+        tags={"background", "single_t", "tautau_jetfakes"},
     )
 
     # Single top production -- remaining events (leptons faking hadronic
@@ -230,10 +182,7 @@ def add_single_t_processes(config: Config):
         id="+",
         is_data=False,
         datasets=single_t_datasets,
-        tags={"tautau_remaining"},
-        aux={
-            "special_selections": [tautau_from_remaining_selection],
-        },
+        tags={"background", "single_t", "tautau_remaining"},
     )
 
 
@@ -306,30 +255,14 @@ def add_dy_processes(config: Config):
         id="+",
         is_data=False,
         datasets=dy_2e_2mu_datasets,
-        tags={"dy", "ee", "mumu", "tautau_genuine"},
-        aux={
-            "special_selections": [
-                z_ee_mumu_gen_selection,
-                tautau_from_genuine_tau_selection,
-            ],
-            "special_weights": [z_pt_reweighting_weights],
-        },
+        tags={"background", "dy", "ee", "mumu", "tautau_genuine"},
     )
     config.add_process(
         name="dy_2tau_tautau",
         id="+",
         is_data=False,
         datasets=dy_2tau_datasets,
-        tags={"dy", "tautau", "tautau_genuine"},
-        aux={
-            "special_selections": [
-                z_tautau_gen_selection,
-                tautau_from_genuine_tau_selection,
-            ],
-            "special_weights": [
-                z_pt_reweighting_weights,
-            ],
-        },
+        tags={"background", "dy", "tautau", "tautau_genuine"},
     )
 
     # DY (-> ell ell) production -- jets faking hadronic taus
@@ -338,16 +271,7 @@ def add_dy_processes(config: Config):
         id="+",
         is_data=False,
         datasets=dy_2e_2mu_datasets,
-        tags={"dy", "ee", "mumu", "tautau_jetfakes"},
-        aux={
-            "special_selections": [
-                z_ee_mumu_gen_selection,
-                tautau_from_jet_fake_selection,
-            ],
-            "special_weights": [
-                z_pt_reweighting_weights,
-            ],
-        },
+        tags={"background", "dy", "ee", "mumu", "tautau_jetfakes"},
     )
     # DY (-> tau tau) production -- jets faking hadronic taus
     config.add_process(
@@ -355,16 +279,7 @@ def add_dy_processes(config: Config):
         id="+",
         is_data=False,
         datasets=dy_2tau_datasets,
-        tags={"dy", "tautau", "tautau_jetfakes"},
-        aux={
-            "special_selections": [
-                z_tautau_gen_selection,
-                tautau_from_jet_fake_selection,
-            ],
-            "special_weights": [
-                z_pt_reweighting_weights,
-            ],
-        },
+        tags={"background", "dy", "tautau", "tautau_jetfakes"},
     )
 
     # DY (-> ell ell) production -- remaining events (leptons faking hadronic
@@ -374,16 +289,7 @@ def add_dy_processes(config: Config):
         id="+",
         is_data=False,
         datasets=dy_2e_2mu_datasets,
-        tags={"dy", "ee", "mumu", "tautau_remaining"},
-        aux={
-            "special_selections": [
-                z_ee_mumu_gen_selection,
-                tautau_from_remaining_selection,
-            ],
-            "special_weights": [
-                z_pt_reweighting_weights,
-            ],
-        },
+        tags={"background", "dy", "ee", "mumu", "tautau_remaining"},
     )
 
     # DY (-> tau tau) production -- remaining events (leptons faking hadronic
@@ -393,16 +299,7 @@ def add_dy_processes(config: Config):
         id="+",
         is_data=False,
         datasets=dy_2tau_datasets,
-        tags={"dy", "tautau", "tautau_remaining"},
-        aux={
-            "special_selections": [
-                z_tautau_gen_selection,
-                tautau_from_remaining_selection,
-            ],
-            "special_weights": [
-                z_pt_reweighting_weights,
-            ],
-        },
+        tags={"background", "dy", "tautau", "tautau_remaining"},
     )
 
 
@@ -450,12 +347,7 @@ def add_w_processes(config: Config):
         id="+",
         is_data=False,
         datasets=w_lnu_datasets,
-        tags={"tautau_genuine"},
-        aux={
-            "special_selections": [
-                tautau_from_genuine_tau_selection,
-            ],
-        },
+        tags={"background", "w", "tautau_genuine"},
     )
 
     # W (-> ell nu) production -- jets faking hadronic taus
@@ -464,12 +356,7 @@ def add_w_processes(config: Config):
         id="+",
         is_data=False,
         datasets=w_lnu_datasets,
-        tags={"tautau_jetfakes"},
-        aux={
-            "special_selections": [
-                tautau_from_jet_fake_selection,
-            ],
-        },
+        tags={"background", "w", "tautau_jetfakes"},
     )
 
     # W (-> ell nu) production -- remaining events (leptons faking hadronic
@@ -479,12 +366,7 @@ def add_w_processes(config: Config):
         id="+",
         is_data=False,
         datasets=w_lnu_datasets,
-        tags={"tautau_remaining"},
-        aux={
-            "special_selections": [
-                tautau_from_remaining_selection,
-            ],
-        },
+        tags={"background", "w", "tautau_remaining"},
     )
 
 
@@ -507,11 +389,6 @@ def add_vv_processes(config: Config):
         id="+",
         is_data=False,
         datasets=vv_datasets,
-        aux={
-            "special_selections": [
-                tautau_from_genuine_tau_selection,
-            ],
-        },
     )
 
     # VV production -- jets faking hadronic taus
@@ -520,12 +397,7 @@ def add_vv_processes(config: Config):
         id="+",
         is_data=False,
         datasets=vv_datasets,
-        tags={"jetfakes"},
-        aux={
-            "special_selections": [
-                tautau_from_jet_fake_selection,
-            ],
-        },
+        tags={"background", "vv", "tautau_jetfakes"},
     )
 
     # VV production -- remaining events (leptons faking hadronic taus, prompt
@@ -535,12 +407,7 @@ def add_vv_processes(config: Config):
         id="+",
         is_data=False,
         datasets=vv_datasets,
-        tags={"tautau_remaining"},
-        aux={
-            "special_selections": [
-                tautau_from_remaining_selection,
-            ],
-        },
+        tags={"background", "vv", "tautau_remaining"},
     )
 
 
@@ -588,10 +455,7 @@ def add_single_h_processes(config: Config):
         id="+",
         is_data=False,
         datasets=single_h_datasets,
-        tags={"tautau_genuine"},
-        aux={
-            "special_selections": [tautau_from_genuine_tau_selection],
-        },
+        tags={"background", "single_h", "tautau_genuine"},
     )
 
     # Single H production -- jets faking hadronic taus
@@ -600,10 +464,7 @@ def add_single_h_processes(config: Config):
         id="+",
         is_data=False,
         datasets=single_h_datasets,
-        tags={"tautau_jetfakes"},
-        aux={
-            "special_selections": [tautau_from_jet_fake_selection],
-        },
+        tags={"background", "single_h", "tautau_jetfakes"},
     )
 
     # Single H production -- remaining events (leptons faking hadronic taus,
@@ -613,10 +474,7 @@ def add_single_h_processes(config: Config):
         id="+",
         is_data=False,
         datasets=single_h_datasets,
-        tags={"tautau_remaining"},
-        aux={
-            "special_selections": [tautau_from_remaining_selection],
-        },
+        tags={"background", "single_h", "tautau_remaining"},
     )
 
 
@@ -633,6 +491,7 @@ def add_hh_processes(config: Config):
         id="+",
         is_data=False,
         datasets=[config.get_dataset("gluglu_hh_2b2tau")],
+        tags={"background", "hh", "tautau_genuine"},
     )
 
     # Remaining SM Higgs pair production processes
@@ -674,8 +533,9 @@ def add_data_driven_processes(config: Config):
         id="+",
         is_data=False,
         datasets=[],
+        tags={"background", "tautau_jetfakes"},
         aux={
-            "is_data_driven": True,
+            "skip_shapes": True,
         },
     )
 
