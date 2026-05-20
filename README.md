@@ -1,9 +1,10 @@
 # bbtautau
 
-Tools for $\text{b}\text{b}\tau\tau$-related analyses for further processing
-of `NTuple`.
+Tools for $\text{b}\text{b}\tau\tau$-related analyses for further processing of
+`NTuple` files.
 
-This repository has been branched off from [smhtt_ul](https://github.com/kit-CMS/smhtt_ul) (commit `d841671`).
+This repository has been branched off from
+[smhtt_ul](https://github.com/kit-CMS/smhtt_ul) (commit `d841671`).
 
 
 ## Installation

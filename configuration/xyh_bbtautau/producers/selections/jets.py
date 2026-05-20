@@ -1,14 +1,21 @@
 from collections import OrderedDict
 
-from configuration.xyh_bbtautau.producers.helpers import requires
+from bbtautau.shapes import AnalysisContext
 
 
-@requires()
-def jet_vetomap() -> OrderedDict[str, str]:
+def jet_vetomap(
+    analysis_context: AnalysisContext,
+) -> OrderedDict[str, str]:
     """
     Apply vetoes on events with jets in vetomap regions. The
     function returns an ordered dictionary with the filter names as keys and the
     ROOT expressions for the selections as values.
+
+    :param analysis_context: Analysis context, to which the selections should
+        be tailored. This is just a placeholder to provide a consistent
+        interface for all selection modules.
+
+    :return: Collection of filter operations.
     """
 
     # Storage for all vetoes
@@ -20,11 +27,18 @@ def jet_vetomap() -> OrderedDict[str, str]:
     return selections
 
 
-@requires()
-def bb_pair() -> OrderedDict[str, str]:
+def bb_pair(
+    analysis_context: AnalysisContext,
+) -> OrderedDict[str, str]:
     """
     Selection of the bb pair. The function returns an ordered dictionary with
     the filter names as keys and the ROOT expressions for the selections as values.
+
+    :param analysis_context: Analysis context, to which the selections should
+        be tailored. This is just a placeholder to provide a consistent
+        interface for all selection modules.
+
+    :return: Collection of filter operations.
     """
 
     # Storage for all bb pair selections

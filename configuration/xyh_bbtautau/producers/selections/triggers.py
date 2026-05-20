@@ -1,21 +1,27 @@
 from collections import OrderedDict
-from order import Campaign, Channel
 
-from configuration.xyh_bbtautau.producers.helpers import requires
+from bbtautau.shapes import AnalysisContext
 
 
-@requires(
-    metadata={"campaign", "channel"},
-)
 def triggers(
-    campaign: Campaign,
-    channel: Channel,
+    analysis_context: AnalysisContext,
 ) -> OrderedDict[str, str]:
     """
     Apply trigger selection depending on the data-taking campaign and the
     analysis channel. The function returns an ordered dictionary with the
     filter names as keys and the ROOT expressions for the filters as values.
+
+    :param analysis_context: Analysis context, to which the selections should
+        be tailored. Attributes used in this function are
+        :py:attr:`~shape_producer.operations.AnalysisContext.campaign` and
+        :py:attr:`~shape_producer.operations.AnalysisContext.channel`.
+
+    :return: Collection of filter operations.
     """
+
+    # Get campaign and channel
+    campaign = analysis_context.campaign
+    channel = analysis_context.channel
 
     # Trigger selections are summarized in a nested map, where the first key
     # is an era or a tuple of eras, and the second key is the channel.
@@ -60,4 +66,3 @@ def triggers(
         )
 
     return OrderedDict([("trigger_selection", expression)])
-

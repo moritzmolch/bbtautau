@@ -1,7 +1,6 @@
 from collections import OrderedDict
-from order import Channel
 
-from configuration.xyh_bbtautau.producers.helpers import requires
+from bbtautau.shapes import AnalysisContext
 
 
 __all__ = [
@@ -13,7 +12,9 @@ __all__ = [
 ]
 
 
-def z_ee_mumu_gen_selection() -> OrderedDict[str, str]:
+def z_ee_mumu_gen_selection(
+    analysis_context: AnalysisContext,
+) -> OrderedDict[str, str]:
     """
     Add selection for for Drell-Yan events with an electron or a muon pair in
     the generator-level final state.
@@ -25,12 +26,10 @@ def z_ee_mumu_gen_selection() -> OrderedDict[str, str]:
     dedicated `"DYto2Tau*"` samples exist.
 
     :param analysis_context: Analysis context, to which the selections should
-        be tailored. In this function, the argument only serves as a
-        placeholder to fulfill the expected signature required by other parts
-        of this code.
+        be tailored. This is just a placeholder to provdide a consistent
+        interface for all selection modules.
 
-    :return: A collection of filter operations for the selection of
-        generator-level ee/$\\mu\\mu$ pairs.
+    :return: Collection of filter operations.
     """
 
     # Add the generator-level selection for Drell-Yan decays into electrons
@@ -50,8 +49,9 @@ def z_ee_mumu_gen_selection() -> OrderedDict[str, str]:
     return selections
 
 
-@requires()
-def z_tautau_gen_selection() -> OrderedDict[str, str]:
+def z_tautau_gen_selection(
+    analysis_context: AnalysisContext,
+) -> OrderedDict[str, str]:
     """
     Add selection for for Drell-Yan events with a tau lepton pair in the
     generator-level final state.
@@ -63,12 +63,10 @@ def z_tautau_gen_selection() -> OrderedDict[str, str]:
     dedicated `"DYto2Tau*"` samples exist.
 
     :param analysis_context: Analysis context, to which the selections should
-        be tailored. In this function, the argument only serves as a
-        placeholder to fulfill the expected signature required by other parts
-        of this code.
+        be tailored. This is just a placeholder to provdide a consistent
+        interface for all selection modules.
 
-    :return: A collection of filter operations for the selection of
-        generator-level $\\tau\\tau$ pairs.
+    :return: Collection of filter operations.
     """
 
     # Add the generator-level selection for Drell-Yan decays into taus (PDG ID
@@ -85,12 +83,8 @@ def z_tautau_gen_selection() -> OrderedDict[str, str]:
     return selections
 
 
-@requires(
-    metadata={"channel"},
-)
 def tautau_from_genuine_tau_selection(
-    *,
-    channel: Channel,
+    analysis_context: AnalysisContext,
 ) -> OrderedDict[str, str]:
     """
     Create selection for events with genuine tau lepton pairs at generator
@@ -117,13 +111,14 @@ def tautau_from_genuine_tau_selection(
     tau decay.
 
     :param analysis_context: Analysis context, to which the selections should
-        be tailored. The function uses the
-        :py:attr:`~shape_producer.operations.AnalysisContext.channel`
-        attribute.
+        be tailored. The attribute used in this function is
+        :py:attr:`~shape_producer.operations.AnalysisContext.channel`.
 
-    :return: A collection of filter operations for the selection of genuine
-        tautau pairs.
+    :return: Collection of filter operations.
     """
+
+    # Get the channel from the analysis context
+    channel = analysis_context.channel
 
     # Select genuine tau pairs based on the generator matching results
     # depending on the channel
@@ -144,12 +139,8 @@ def tautau_from_genuine_tau_selection(
     return OrderedDict([("tautau_from_genuine_tau", expression)])
 
 
-@requires(
-    metadata={"channel"},
-)
 def tautau_from_jet_fake_selection(
-    *,
-    channel: Channel,
+    analysis_context: AnalysisContext,
 ) -> OrderedDict[str, str]:
     """
     Create selection for events with at least one
@@ -176,22 +167,23 @@ def tautau_from_jet_fake_selection(
     cannot occur.
 
     :param analysis_context: Analysis context, to which the selections should
-        be tailored. The function uses the
-        :py:attr:`~shape_producer.operations.AnalysisContext.channel`
-        attribute.
+        be tailored. The attribute used in this function is
+        :py:attr:`~shape_producer.operations.AnalysisContext.channel`.
 
-    :return: A collection of filter operations for the selection of events with
-        at least one fake hadronic tau.
+    :return: Collection of filter operations.
     """
 
+    # Get the channel from the analysis context
+    channel = analysis_context.channel
+
     # Get the selection for genuine tau pairs to veto them here
-    genuine_tau_selections = tautau_from_genuine_tau_selection(channel)
+    genuine_tau_selections = tautau_from_genuine_tau_selection(analysis_context)
 
     # Select jet -> tau_h  fakes based on the generator matching results
     # depending on the channel. For channels without hadronic taus, no jet ->
     # tau_h fakes can occur.
     expression = ""
-    expression_tautau = genuine_tau_selections.concatenate_filter_expressions()
+    expression_tautau = " && ".join(genuine_tau_selections.values())
     if channel.name in ["et", "mt"]:
         expression = f"""
             !({expression_tautau})
@@ -210,12 +202,8 @@ def tautau_from_jet_fake_selection(
     return OrderedDict([("tautau_from_jet_fake", expression)])
 
 
-@requires(
-    metadata={"channel"},
-)
 def tautau_from_remaining_selection(
-    *,
-    channel: Channel,
+    analysis_context: AnalysisContext,
 ) -> OrderedDict[str, str]:
     """
     Create selection for events with $\\ell \\to \\tau_{\\text{h}}$ fakes or
@@ -243,18 +231,18 @@ def tautau_from_remaining_selection(
     $\\text{jet} \\to \\tau_{\\text{h}}$ fake is found in the event.
 
     :param analysis_context: Analysis context, to which the selections should
-        be tailored. The function uses the
-        :py:attr:`~shape_producer.operations.AnalysisContext.channel`
-        attribute.
+        be tailored. The attribute used in this function is
+        :py:attr:`~shape_producer.operations.AnalysisContext.channel`.
 
-    :return: A collection of filter operations for the selection of events with
-        without genuine tautau pairs and fake hadronic taus.
+    :return: Collection of filter operations.
     """
 
     # Get the selections for genuine tau pairs and jet -> tau_h fakes to veto
     # them here
-    genuine_tau_selections = tautau_from_genuine_tau_selection(channel)
-    jet_fake_selections = tautau_from_jet_fake_selection(channel)
+    genuine_tau_selections = tautau_from_genuine_tau_selection(analysis_context)
+    jet_fake_selections = tautau_from_jet_fake_selection(analysis_context)
+    expression_tautau = " && ".join(genuine_tau_selections.values())
+    expression_jet_fake = " && ".join(jet_fake_selections.values())
 
     # Select genuine tau pairs based on the generator matching results
     # depending on the channel. Select events that do not have a genuine tau
@@ -265,8 +253,8 @@ def tautau_from_remaining_selection(
                 "tautau_from_lepton_fake",
                 f"""
                 (
-                    !({genuine_tau_selections.concatenate_filter_expressions()})
-                    && !({jet_fake_selections.concatenate_filter_expressions()})
+                    !({expression_tautau})
+                    && !({expression_jet_fake})
                 )
                 """,
             ),
