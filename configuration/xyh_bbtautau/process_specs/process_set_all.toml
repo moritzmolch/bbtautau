@@ -1,0 +1,3785 @@
+[metadata]
+
+name = "signals"
+campaigns = ["2022preEE", "2022postEE", "2023preBPix", "2023postBPix", "2024"]
+channels = ["et", "mt", "tt"]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1000_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1000_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1000_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1000_my300",
+]
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1000_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1000_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1000_my600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1000_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1000_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1000_my800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1000_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1000_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1000_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1200_my1000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1200_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1200_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1200_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1200_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1200_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1200_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1200_my600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1200_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1200_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1200_my800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1200_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1200_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1200_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1400_my1000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1400_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1400_my1200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1400_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1400_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1400_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1400_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1400_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1400_my600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1400_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1400_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1400_my800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1400_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1400_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1400_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1600_my1000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1600_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1600_my1200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1600_my1400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1600_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1600_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1600_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1600_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1600_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1600_my600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1600_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1600_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1600_my800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1600_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1600_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1600_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1800_my1000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1800_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1800_my1200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1800_my1400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1800_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1800_my1600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1800_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1800_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1800_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1800_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1800_my600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1800_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1800_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1800_my800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1800_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1800_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx1800_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2000_my1000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2000_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2000_my1200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2000_my1400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2000_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2000_my1600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2000_my1800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2000_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2000_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2000_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2000_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2000_my600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2000_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2000_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2000_my800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2000_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2000_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2000_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2500_my1000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2500_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2500_my1200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2500_my1400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2500_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2500_my1600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2500_my1800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2500_my2000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2500_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2500_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2500_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2500_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2500_my600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2500_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2500_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2500_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2500_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx2500_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx300_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx300_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx300_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx300_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx300_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx300_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx300_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3000_my1000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3000_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3000_my1200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3000_my1400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3000_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3000_my1600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3000_my1800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3000_my2000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3000_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3000_my2600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3000_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3000_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3000_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3000_my600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3000_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3000_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3000_my800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3000_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3000_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3000_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3500_my1000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3500_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3500_my1200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3500_my1400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3500_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3500_my1600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3500_my1800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3500_my2000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3500_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3500_my2600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3500_my3000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3500_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3500_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3500_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3500_my600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3500_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3500_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3500_my800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3500_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3500_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx3500_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx400_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx400_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx400_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx400_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx400_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx400_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx400_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx400_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx4000_my1000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx4000_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx4000_my1200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx4000_my1400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx4000_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx4000_my1600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx4000_my1800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx4000_my2000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx4000_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx4000_my2600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx4000_my3000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx4000_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx4000_my3500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx4000_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx4000_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx4000_my600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx4000_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx4000_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx4000_my800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx4000_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx4000_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx4000_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx500_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx500_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx500_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx500_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx500_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx500_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx500_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx500_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx500_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx550_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx550_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx550_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx550_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx550_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx550_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx550_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx550_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx550_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx550_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx600_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx600_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx600_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx600_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx600_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx600_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx600_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx600_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx600_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx600_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx650_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx650_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx650_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx650_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx650_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx650_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx650_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx650_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx650_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx650_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx650_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx700_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx700_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx700_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx700_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx700_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx700_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx700_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx700_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx700_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx700_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx700_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx800_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx800_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx800_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx800_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx800_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx800_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx800_my600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx800_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx800_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx800_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx800_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx800_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx900_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx900_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx900_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx900_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx900_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx900_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx900_my600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx900_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx900_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx900_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx900_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2b_h2tau_mx900_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1000_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1000_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1000_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1000_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1000_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1000_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1000_my600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1000_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1000_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1000_my800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1000_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1000_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1000_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1200_my1000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1200_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1200_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1200_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1200_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1200_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1200_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1200_my600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1200_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1200_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1200_my800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1200_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1200_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1200_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1400_my1000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1400_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1400_my1200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1400_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1400_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1400_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1400_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1400_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1400_my600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1400_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1400_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1400_my800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1400_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1400_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1400_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1600_my1000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1600_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1600_my1200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1600_my1400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1600_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1600_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1600_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1600_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1600_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1600_my600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1600_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1600_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1600_my800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1600_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1600_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1600_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1800_my1000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1800_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1800_my1200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1800_my1400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1800_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1800_my1600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1800_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1800_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1800_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1800_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1800_my600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1800_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1800_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1800_my800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1800_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1800_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx1800_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2000_my1000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2000_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2000_my1200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2000_my1400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2000_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2000_my1600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2000_my1800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2000_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2000_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2000_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2000_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2000_my600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2000_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2000_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2000_my800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2000_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2000_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2000_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2500_my1000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2500_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2500_my1200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2500_my1400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2500_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2500_my1600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2500_my1800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2500_my2000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2500_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2500_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2500_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2500_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2500_my600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2500_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2500_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2500_my800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2500_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx2500_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx300_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx300_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx300_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx300_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx300_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx300_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx300_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3000_my1000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3000_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3000_my1200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3000_my1400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3000_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3000_my1600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3000_my1800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3000_my2000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3000_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3000_my2600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3000_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3000_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3000_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3000_my600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3000_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3000_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3000_my800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3000_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3000_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3000_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3500_my1000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3500_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3500_my1200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3500_my1400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3500_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3500_my1600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3500_my1800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3500_my2000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3500_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3500_my2600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3500_my3000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3500_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3500_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3500_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3500_my600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3500_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3500_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3500_my800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3500_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3500_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx3500_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx400_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx400_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx400_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx400_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx400_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx400_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx400_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx400_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx4000_my1000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx4000_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx4000_my1200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx4000_my1400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx4000_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx4000_my1600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx4000_my1800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx4000_my2000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx4000_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx4000_my2600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx4000_my3000",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx4000_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx4000_my3500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx4000_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx4000_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx4000_my600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx4000_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx4000_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx4000_my800",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx4000_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx4000_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx4000_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx500_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx500_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx500_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx500_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx500_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx500_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx500_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx500_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx500_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx550_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx550_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx550_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx550_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx550_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx550_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx550_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx550_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx550_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx550_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx600_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx600_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx600_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx600_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx600_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx600_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx600_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx600_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx600_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx600_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx650_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx650_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx650_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx650_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx650_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx650_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx650_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx650_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx650_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx650_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx650_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx700_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx700_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx700_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx700_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx700_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx700_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx700_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx700_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx700_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx700_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx700_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx800_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx800_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx800_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx800_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx800_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx800_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx800_my600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx800_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx800_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx800_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx800_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx800_my95",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx900_my100",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx900_my150",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx900_my200",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx900_my300",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx900_my400",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx900_my500",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx900_my600",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx900_my60",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx900_my70",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx900_my80",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx900_my90",
+]
+
+
+[[signals]]
+
+processes = [
+    "xyh_y2tau_h2b_mx900_my95",
+]
+
+
+[[backgrounds]]
+
+processes = [
+    "tt_tautau",
+]
+label = "$\\text{t}\\bar{\\text{t}}$ ($\\tau\\tau$)"
+color = "#3f90da"
+
+
+[[backgrounds]]
+
+processes = [
+    "tt_jetfakes",
+]
+label = "$\\text{t}\\bar{\\text{t}}$ ($\\text{j} \\to \\tau_{\\text{h}}$)"
+color = "#6da4daff"
+
+
+[[backgrounds]]
+
+processes = [
+    "tt_rem",
+]
+label = "$\\text{t}\\bar{\\text{t}}$ (other)"
+color = "#a3beda"
+
+
+[[backgrounds]]
+
+processes = [
+    "dy_2e_2mu_tautau",
+    "dy_2tau_tautau",
+]
+label="DY ($\\tau\\tau$)"
+color = "#ffa90e"
+
+
+[[backgrounds]]
+
+processes = [
+    "dy_2e_2mu_jetfakes",
+    "dy_2tau_jetfakes",
+    "dy_2e_2mu_rem",
+    "dy_2tau_rem",
+]
+label = "DY (other)"
+color = "#ffebc0"
+
+
+[[backgrounds]]
+
+processes = [
+    "w_lnu_tautau",
+    "w_lnu_jetfakes",
+    "w_lnu_rem",
+]
+label = "W"
+color = "#bd1f01"
+
+
+[[backgrounds]]
+
+processes = [
+    "single_t_tautau",
+    "single_t_jetfakes",
+    "single_t_rem",
+]
+label = "Single $\\text{t}$"
+color = "#e86300"
+
+
+[[backgrounds]]
+
+processes = [
+    "single_h_tautau",
+    "single_h_jetfakes",
+    "single_h_rem",
+    "vv_tautau",
+    "vv_jetfakes",
+    "vv_rem",
+]
+label = "$\\text{H}$, $\\text{V}\\text{V}$"
+color = "#a96b59"

@@ -1,0 +1,138 @@
+[metadata]
+
+name = "mc"
+campaigns = ["2022preEE", "2022postEE", "2023preBPix", "2023postBPix", "2024"]
+channels = ["ee", "mm"]
+
+#
+# Data specs
+#
+
+[[data]]
+
+processes = [
+    "egamma",
+]
+label = "Data"
+color = "#000000"
+channels = ["ee"]
+
+[[data]]
+
+processes = [
+    "muon",
+]
+label = "Data"
+color = "#000000"
+channels = ["mm"]
+
+
+#
+# Signal specs
+#
+
+# [[signals]]
+
+# processes = [
+#     "gluglu_hh_2b2tau",
+# ]
+# label = "$\\text{H}\\text{H}$ (ggF)"
+# color = "#ff0000"
+
+# [[signals]]
+
+# processes = [
+#     "xyh_y2b_h2tau_mx1600_my1000",
+# ]
+# label = "$\\text{X}\\to\\text{Y}(\\text{bb})\\text{H}(\\tau\\tau)$\n$m_{\\text{X}} = 1600$ GeV\n$m_{\\text{Y}} = 1000$ GeV"
+# color = "#ff0000"
+
+# [[signals]]
+
+# processes = [
+#     "xyh_y2tau_h2b_mx1600_my1000",
+# ]
+# label = "$\\text{X}\\to\\text{Y}(\\tau\\tau)\\text{H}(\\text{bb})$\n$m_{\\text{X}} = 1600$ GeV\n$m_{\\text{Y}} = 1000$ GeV"
+# color = "#00ff00"
+
+
+#
+# Background specs
+#
+
+[[backgrounds]]
+
+processes = [
+    "tt_tautau",
+]
+label = "$\\text{t}\\bar{\\text{t}}$ ($\\tau\\tau$)"
+color = "#3f90da"
+
+[[backgrounds]]
+
+processes = [
+    "tt_jetfakes",
+]
+label = "$\\text{t}\\bar{\\text{t}}$ ($\\text{j} \\to \\tau_{\\text{h}}$)"
+color = "#6da4daff"
+
+[[backgrounds]]
+
+processes = [
+    "tt_rem",
+]
+label = "$\\text{t}\\bar{\\text{t}}$ (other)"
+color = "#a3beda"
+
+[[backgrounds]]
+
+processes = [
+    "dy_2e_2mu_tautau",
+    "dy_2tau_tautau",
+]
+label="DY ($\\tau\\tau$)"
+color = "#ffa90e"
+
+[[backgrounds]]
+
+processes = [
+    "dy_2e_2mu_jetfakes",
+    "dy_2tau_jetfakes",
+    "dy_2e_2mu_rem",
+    "dy_2tau_rem",
+]
+label = "DY (other)"
+color = "#ffebc0"
+
+[[backgrounds]]
+
+processes = [
+    "w_lnu_tautau",
+    "w_lnu_jetfakes",
+    "w_lnu_rem",
+]
+label = "W"
+color = "#bd1f01"
+
+[[backgrounds]]
+
+processes = [
+    "single_t_tautau",
+    "single_t_jetfakes",
+    "single_t_rem",
+]
+label = "Single $\\text{t}$"
+color = "#e86300"
+
+[[backgrounds]]
+
+processes = [
+    "single_h_tautau",
+    "single_h_jetfakes",
+    "single_h_rem",
+    "vv_tautau",
+    "vv_jetfakes",
+    "vv_rem",
+]
+label = "$\\text{H}$, $\\text{V}\\text{V}$"
+color = "#a96b59"

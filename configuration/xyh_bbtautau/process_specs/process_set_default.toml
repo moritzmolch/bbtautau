@@ -1,0 +1,119 @@
+[metadata]
+
+name = "default"
+campaigns = ["2022preEE", "2022postEE", "2023preBPix", "2023postBPix", "2024"]
+channels = ["et", "mt", "tt", "em", "ee", "mm"]
+
+#
+# Data specs
+#
+
+[[data]]
+
+processes = [
+    "egamma",
+]
+label = "Data"
+color = "#000000"
+channels = ["et", "em", "ee"]
+
+[[data]]
+
+processes = [
+    "muon",
+]
+label = "Data"
+color = "#000000"
+channels = ["mt", "mm"]
+
+[[data]]
+
+processes = [
+    "tau",
+]
+label = "Data"
+color = "#000000"
+channels = ["tt"]
+
+#
+# Signal specs
+#
+
+# [[signals]]
+
+# processes = [
+#     "xyh_y2b_h2tau_mx1600_my1000",
+# ]
+# label = "$\\text{X}(1600)\\to$\n$\\text{Y}(1000, \\text{bb})\\text{H}(\\tau\\tau)$"
+# color = "#ff0000"
+# scale_factor = { et = 20.0, mt = 20.0, tt = 0.75 }
+
+# [[signals]]
+
+# processes = [
+#     "xyh_y2tau_h2b_mx1600_my1000",
+# ]
+# label = "$\\text{X}(1600)\\to$\n$\\text{Y}(1000, \\tau\\tau)\\text{H}(\\text{bb})$"
+# color = "#0000ff"
+# scale_factor = { et = 12.5, mt = 12.5, tt = 0.5 }
+
+#
+# Background specs
+#
+
+[[backgrounds]]
+
+processes = [
+    "tt_tautau",
+    "tt_rem",
+]
+label = "$\\text{t}\\bar{\\text{t}}$ (non-$\\text{j} \\to \\tau_{\\text{h}}$)"
+color = "#3f90da"
+
+[[backgrounds]]
+
+processes = [
+    "dy_2e_2mu_tautau",
+    "dy_2tau_tautau",
+    "dy_2e_2mu_rem",
+    "dy_2tau_rem",
+]
+label="DY"
+color = "#ffa90e"
+
+[[backgrounds]]
+
+processes = [
+    "w_lnu_tautau",
+    "w_lnu_rem",
+]
+label = "W (non-$\\text{j} \\to \\tau_{\\text{h}}$)"
+color = "#bd1f01"
+
+[[backgrounds]]
+
+processes = [
+    "single_t_tautau",
+    "single_t_rem",
+]
+label = "Single $\\text{t}$ (non-$\\text{j} \\to \\tau_{\\text{h}}$)"
+color = "#e86300"
+
+[[backgrounds]]
+
+processes = [
+    "single_h_tautau",
+    "single_h_rem",
+    "vv_tautau",
+    "vv_rem",
+]
+label = "$\\text{H}$, $\\text{V}\\text{V}$ (non-$\\text{j} \\to \\tau_{\\text{h}}$) "
+color = "#a96b59"
+
+[[backgrounds]]
+
+processes = [
+    "jetfakes",
+]
+label = "$\\text{jet} \\to \\tau_{\\text{h}}$"
+color = "#b9ac70"
