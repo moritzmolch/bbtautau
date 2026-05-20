@@ -473,4 +473,3 @@ def add_higgs_datasets(
             "2024": [],
         },
     )
-
